@@ -1,5 +1,6 @@
-public class Main {
+class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Book StewartCalculus = new Book("000001", "Calculus, Vol 1", "James", "Stewart",
+                "9th", "Calculus", true);
     }
 }
