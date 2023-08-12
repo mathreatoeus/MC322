@@ -5,9 +5,9 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 
 /**
- * Class that represents a member of the library's staff
+ * Class that represents a member of the library's staff.
  *
- * @author Matheus Reato (RA: 244088)
+ * @author Matheus Reato (RA: 244088).
  */
 
 public class Staff extends Person {
@@ -32,7 +32,7 @@ public class Staff extends Person {
     }
 
     // Getters --------------------------------------------------------------------------
-    public String getStaffId() {     // Method made public for testing purposes.
+    public String getStaffId() {              // Method made public for testing purposes.
         return staffId;
     }
 
@@ -40,11 +40,11 @@ public class Staff extends Person {
         return sector;
     }
 
-    public String getUsername() {    // Method made public for testing purposes.
+    public String getUsername() {             // Method made public for testing purposes.
         return username;
     }
 
-    public String getPassword() {    // Method made public for testing purposes.
+    public String getPassword() {             // Method made public for testing purposes.
         return password;
     }
 

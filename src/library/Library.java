@@ -6,15 +6,15 @@ import people.User;
 import java.util.LinkedList;
 
 /**
- * Class that represents a library belonging to an institute of the university
+ * Class that represents a library belonging to an institute of the university.
  *
- * @author Matheus Reato (RA: 244088)
+ * @author Matheus Reato (RA: 244088).
  */
 
 public class Library {
     // Private Attributes ---------------------------------------------------------------
     private String institute;
-    private LinkedList<Book> books;   // Might be substituted by a min-heap in the future
+    private LinkedList<Book> books;  // Might be substituted by a min-heap in the future.
     private LinkedList<Staff> staff;
     private LinkedList<User> users;
 
@@ -51,8 +51,7 @@ public class Library {
     // Methods --------------------------------------------------------------------------
 
     /**
-     * Method to try and add a Book to the Library. It will only add the book if it isn't
-     * yet in the Library.
+     * Method to try and add a Book to the Library.
      *
      * @param newBook Book to be added.
      * @return true on succcess and false on failure.
@@ -68,8 +67,7 @@ public class Library {
     }
 
     /**
-     * Method to try and remove a Book from the Library. It will only remove the book if
-     * it is already in the Library.
+     * Method to try and remove a Book from the Library.
      *
      * @param bookToRemove Book to be removed.
      * @return true on success and false on failure.
@@ -77,6 +75,70 @@ public class Library {
     public boolean removeBook(Book bookToRemove) {
         if (this.books.contains(bookToRemove)) {
             this.books.remove(bookToRemove);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and add a new staff member to a Library's staff list.
+     *
+     * @param staffMember The new staff member to be added to the list.
+     * @return true on success and false on failure.
+     */
+    public boolean addStaff(Staff staffMember) {
+        if (!this.staff.contains(staffMember)) {
+            this.staff.add(staffMember);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and remove a staff member from a Library's staff.
+     *
+     * @param staffMember The staff member to be removed.
+     * @return true on success and false on failure.
+     */
+    public boolean removeStaff(Staff staffMember) {
+        if (this.staff.contains(staffMember)) {
+            this.staff.remove(staffMember);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and add a new user to a Library's user list.
+     *
+     * @param newUser User to be added.
+     * @return true on success and false on failure.
+     */
+    public boolean addUser(User newUser) {
+        if(!this.users.contains(newUser)) {
+            this.users.add(newUser);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and remove a user from a Library's user list.
+     *
+     * @param user User to be removed.
+     * @return true on success and false on failure.
+     */
+    public boolean removeUser(User user) {
+        if(this.users.contains(user)) {
+            this.users.remove(user);
             return true;
         }
         else {

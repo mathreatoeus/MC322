@@ -8,7 +8,7 @@ import people.Staff;
 /**
  * ShelfSense Library Management System.
  *
- * @author Matheus Reato (RA: 244088)
+ * @author Matheus Reato (RA: 244088).
  * @version 1.0
  */
 
@@ -82,5 +82,93 @@ class Main {
 
         System.out.println(changeTrial);
         System.out.println(sheldon.getPassword());
+
+        // Testing the Book class -------------------------------------------------------
+
+        System.out.println("------- Testing Book Class -------");
+
+        Book leavesOfGrass = new Book("Leaves of Grass", "Walt",
+                "Whitman", "American Poetry", "Poetry", 1, 1);
+
+        System.out.println(leavesOfGrass.getGenre());
+
+        // incrementTimesBorrowed() method test --> Pass
+
+        System.out.println(leavesOfGrass.getTimesBorrowed());
+        changeTrial = leavesOfGrass.incrementTimesBorrowed();
+        System.out.println(changeTrial);
+        System.out.println(leavesOfGrass.getTimesBorrowed());
+
+        // Testing the Library class -----------------------------------------------------
+
+        System.out.println("------- Testing Library Class -------");
+
+        // Testing add methods --> Pass
+
+        Library bif = new Library("IFGW");
+        boolean addBookStatus = bif.addBook(leavesOfGrass);
+        boolean addUserStatus = bif.addUser(leonard);
+        boolean addStaffStatus = bif.addStaff(sheldon);
+
+        System.out.println(bif.getInstitute());
+        System.out.println(bif.getBooks());
+        System.out.println(bif.getStaff());
+        System.out.println(bif.getUsers());
+
+        System.out.println("----------------------");
+
+        // Testing remove methods --> Pass
+
+        addBookStatus = bif.removeBook(leavesOfGrass);
+        addUserStatus = bif.removeUser(leonard);
+        addStaffStatus = bif.removeStaff(sheldon);
+
+        System.out.println(bif.getInstitute());
+        System.out.println(bif.getBooks());
+        System.out.println(bif.getStaff());
+        System.out.println(bif.getUsers());
+
+        // Testing the Loan class --------------------------------------------------------
+
+        System.out.println("------- Testing Loan Class -------");
+
+        addBookStatus = bif.addBook(leavesOfGrass);
+        addUserStatus = bif.addUser(leonard);
+        addStaffStatus = bif.addStaff(sheldon);
+
+        Book calculusJamesStuart = new Book("Calculus, Vol 1", "James",
+                "Stuart", "Calculus", "Non-fition", 9, 2);
+
+        bif.addBook(calculusJamesStuart);
+
+        // Testing constructors and book availability check --> Pass
+
+        Loan leonardsLoan = new Loan(bif, leavesOfGrass, leonard);
+        System.out.print("Leonard's loan of Leaves of Grass: ");
+        System.out.println(leonardsLoan.getBook());
+
+        Loan sheldonsLoan1 = new Loan(bif, leavesOfGrass, sheldon);
+        System.out.print("Sheldon's loan of Leaves of Grass: ");
+        System.out.println(sheldonsLoan1.getBook());
+
+        Loan sheldonsLoan2 = new Loan(bif, calculusJamesStuart, sheldon);
+        System.out.print("Sheldon's loan of Calculus, Vol 1: ");
+        System.out.println(sheldonsLoan2.getBook());
+
+        System.out.println("----------------------");
+
+        // Testing renewals --> Pass
+
+        System.out.print("Leonard's retrieval date: ");
+        System.out.println(leonardsLoan.getRetrievalDate());
+
+        leonardsLoan.renewLoan();
+
+        System.out.print("Leonard's new retrieval date: ");
+        System.out.println(leonardsLoan.getRetrievalDate());
+
+        // Testing the loan's expiration date check --> Pass
+
+        System.out.println(leonardsLoan.checkExpiration());
     }
 }

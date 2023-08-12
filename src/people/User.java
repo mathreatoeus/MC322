@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Class that represents a registered library user.
  *
- * @author Matheus Reato (RA: 244088)
+ * @author Matheus Reato (RA: 244088).
  */
 
 public class User extends Person {
@@ -36,11 +36,11 @@ public class User extends Person {
         return username;
     }
 
-    public String getPassword() {    // Method made public for testing purposes.
+    public String getPassword() {             // Method made public for testing purposes.
         return password;
     }
 
-    public String getMemberId() {     // Method made public for testing purposes.
+    public String getMemberId() {             // Method made public for testing purposes.
         return memberId;
     }
 
@@ -68,7 +68,7 @@ public class User extends Person {
     // Methods --------------------------------------------------------------------------
 
     /**
-     * Takes a username and hashes it using SHA-256 to generate a secure ID
+     * Takes a username and hashes it using SHA-256 to generate a secure ID.
      *
      * @param username User's personal username.
      * @return hash Member's ID.
