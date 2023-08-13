@@ -8,7 +8,7 @@ import java.util.LinkedList;
 /**
  * Class that represents a library belonging to an institute of the university.
  *
- * @author Matheus Reato (RA: 244088).
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
 public class Library {

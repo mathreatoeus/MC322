@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Class that represents a registered library user.
  *
- * @author Matheus Reato (RA: 244088).
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
 public class User extends Person {

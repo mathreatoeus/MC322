@@ -7,7 +7,7 @@ import people.Staff;
 /**
  * Class that represents a loan of a Book from a Library to a User.
  *
- * @author Matheus Reato (RA: 244088).
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
 public class Loan {
@@ -95,7 +95,7 @@ public class Loan {
     // Methods --------------------------------------------------------------------------
 
     /**
-     * Method to try and renewal the loan. The maximum amount of renewals allowed is 5.
+     * Method to try and renew the loan. The maximum amount of renewals allowed is 5.
      *
      * @return true on success and false on failure.
      */

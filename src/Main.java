@@ -8,7 +8,7 @@ import people.Staff;
 /**
  * ShelfSense Library Management System.
  *
- * @author Matheus Reato (RA: 244088).
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  * @version 1.0
  */
 

@@ -4,7 +4,7 @@ package people;
  * Class that represents a general non-registered, non-staff person. Superclass of User
  * and Staff.
  *
- * @author Matheus Reato (RA: 244088).
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
 public class Person {

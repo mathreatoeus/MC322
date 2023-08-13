@@ -7,7 +7,7 @@ import java.time.LocalDate;
 /**
  * Class that represents a member of the library's staff.
  *
- * @author Matheus Reato (RA: 244088).
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
 public class Staff extends Person {
