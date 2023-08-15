@@ -14,19 +14,17 @@ public class Staff extends Person {
     // Private Attributes ---------------------------------------------------------------
     private String staffId;
     private String sector;
-    private String username;
-    private String password;
-    private LocalDate registrationDate;
 
     // Constructor ----------------------------------------------------------------------
-    public Staff(String name, String surname, String socialId, String sector,
-                 String username, String password) {
+    public Staff(String name, String surname, String socialId, String username,
+                 String password, String sector) {
         this.name = name;
         this.surname = surname;
         this.socialId = socialId;
-        this.sector = sector;
         this.username = username;
         this.password = password;
+        this.sector = sector;
+        this.isSuspended = false;
         this.registrationDate = LocalDate.now();
         this.staffId = generateStaffId(this.username);
     }
@@ -40,29 +38,9 @@ public class Staff extends Person {
         return sector;
     }
 
-    public String getUsername() {             // Method made public for testing purposes.
-        return username;
-    }
-
-    public String getPassword() {             // Method made public for testing purposes.
-        return password;
-    }
-
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
-    }
-
     // Setters  -------------------------------------------------------------------------
-    public void setSector(String newSector) {
+    private void setSector(String newSector) {
         this.sector = newSector;
-    }
-
-    private void setUsername(String newUsername) {
-        this.username = newUsername;
-    }
-
-    private void setPassword(String newPassword) {
-        this.password = newPassword;
     }
 
     // Methods --------------------------------------------------------------------------
@@ -96,32 +74,16 @@ public class Staff extends Person {
     }
 
     /**
-     * Method to try and change the current staff member's username upon authentication.
+     * Method to try and change the current staff member's sector upon authentication.
      *
-     * @param newUsername New desired username.
-     * @param currentPassword This staff member's current password.
+     * @param newSector The sector to which the staff member will be transferred.
+     * @param username The current staff member's username.
+     * @param password The current staff member's password.
      * @return true on success and false on failure.
      */
-    public boolean changeUsername(String newUsername, String currentPassword) {
-        if (currentPassword.equals(this.password)) {
-            this.username = newUsername;
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    /**
-     * Method to try and change the current staff member's password upon authentication.
-     *
-     * @param newPassword New desired password.
-     * @param currentPassword This staff member's current password.
-     * @return true on success and false on failure.
-     */
-    public boolean changePassword(String newPassword, String currentPassword) {
-        if (currentPassword.equals(this.password)) {
-            this.password = newPassword;
+    private boolean changeSector(String newSector, String username, String password) {
+        if (this.username.equals(username) && this.password.equals(password)) {
+            setSector(newSector);
             return true;
         }
         else {

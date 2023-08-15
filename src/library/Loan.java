@@ -1,7 +1,9 @@
 package library;
 
 import java.time.LocalDate;
-import people.User;
+import people.InternalUser;
+import people.ExternalUser;
+import people.FacultyUser;
 import people.Staff;
 
 /**
@@ -14,16 +16,56 @@ public class Loan {
     // Private Attributes ---------------------------------------------------------------
     private Library library;
     private Book book;
-    private User user;                                                   // If applicable
-    private Staff staff;                                                 // If applicable
+    private Staff staff;                                                // If applicable.
+    private InternalUser internalUser;                                  // If applicable.
+    private ExternalUser externalUser;                                  // If applicable.
+    private FacultyUser facultyUser;                                    // If applicable.
     private LocalDate loanDate;
     private LocalDate retrievalDate;
     private byte amountOfRenewals;
 
-    // Constructor (loan to user) -------------------------------------------------------
-    public Loan(Library library, Book book, User user) {
+    // Constructor (loan to internal user) -------------------------------------------------------
+    public Loan(Library library, Book book, InternalUser internalUser) {
         this.library = library;
-        this.user = user;
+        this.internalUser = internalUser;
+        this.loanDate = LocalDate.now();
+        this.retrievalDate = this.loanDate.plusDays(7);
+        this.amountOfRenewals = 0;
+
+        // Checking to see if the requested book is available for loan.
+        if (book.getAvailable()) {
+            this.book = book;
+            this.book.incrementTimesBorrowed();
+            this.book.setAvailable(false);
+        }
+        else {
+            this.book = null;
+        }
+    }
+
+    // Constructor (loan to an external user)
+    public Loan(Library library, Book book, ExternalUser externalUser) {
+        this.library = library;
+        this.externalUser = externalUser;
+        this.loanDate = LocalDate.now();
+        this.retrievalDate = this.loanDate.plusDays(7);
+        this.amountOfRenewals = 0;
+
+        // Checking to see if the requested book is available for loan.
+        if (book.getAvailable()) {
+            this.book = book;
+            this.book.incrementTimesBorrowed();
+            this.book.setAvailable(false);
+        }
+        else {
+            this.book = null;
+        }
+    }
+
+    // Constructor (loan to faculty user)
+    public Loan(Library library, Book book, FacultyUser facultyUser) {
+        this.library = library;
+        this.facultyUser = facultyUser;
         this.loanDate = LocalDate.now();
         this.retrievalDate = this.loanDate.plusDays(7);
         this.amountOfRenewals = 0;
