@@ -28,6 +28,9 @@ public class Loan {
     public Loan(Library library, Book book, InternalUser internalUser) {
         this.library = library;
         this.internalUser = internalUser;
+        this.externalUser = null;
+        this.facultyUser = null;
+        this.staff = null;
         this.loanDate = LocalDate.now();
         this.retrievalDate = this.loanDate.plusDays(7);
         this.amountOfRenewals = 0;
@@ -46,7 +49,10 @@ public class Loan {
     // Constructor (loan to an external user)
     public Loan(Library library, Book book, ExternalUser externalUser) {
         this.library = library;
+        this.internalUser = null;
         this.externalUser = externalUser;
+        this.facultyUser = null;
+        this.staff = null;
         this.loanDate = LocalDate.now();
         this.retrievalDate = this.loanDate.plusDays(7);
         this.amountOfRenewals = 0;
@@ -65,7 +71,10 @@ public class Loan {
     // Constructor (loan to faculty user)
     public Loan(Library library, Book book, FacultyUser facultyUser) {
         this.library = library;
+        this.internalUser = null;
+        this.externalUser = null;
         this.facultyUser = facultyUser;
+        this.staff = null;
         this.loanDate = LocalDate.now();
         this.retrievalDate = this.loanDate.plusDays(7);
         this.amountOfRenewals = 0;
@@ -84,6 +93,9 @@ public class Loan {
     // Constructor (loan to a staff member)
     public Loan(Library library, Book book, Staff staff) {
         this.library = library;
+        this.internalUser = null;
+        this.externalUser = null;
+        this.facultyUser = null;
         this.staff = staff;
         this.loanDate = LocalDate.now();
         this.retrievalDate = this.loanDate.plusDays(7);
@@ -113,8 +125,16 @@ public class Loan {
         return this.getBook().getTitle();
     }
 
-    public User getUser() {
-        return user;
+    public InternalUser getInternalUser() {
+        return internalUser;
+    }
+
+    public ExternalUser getExternalUser() {
+        return externalUser;
+    }
+
+    public FacultyUser getFacultyUser() {
+        return facultyUser;
     }
 
     public Staff getStaff() {
