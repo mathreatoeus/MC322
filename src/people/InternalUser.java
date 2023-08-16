@@ -1,8 +1,6 @@
 package people;
 
 import java.time.LocalDate;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * Class that represents a registered library user.
