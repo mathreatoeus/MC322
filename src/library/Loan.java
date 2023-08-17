@@ -56,8 +56,7 @@ public class Loan {
         this.loanDate = LocalDate.now();
         this.retrievalDate = this.loanDate.plusDays(7);
         this.amountOfRenewals = 0;
-
-        // Checking to see if the requested book is available for loan.
+        
         if (book.getAvailable()) {
             this.book = book;
             this.book.incrementTimesBorrowed();
