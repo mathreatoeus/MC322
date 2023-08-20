@@ -1,11 +1,7 @@
 package library;
 
 import people.Staff;
-import people.User;
-<<<<<<< HEAD
-
-=======
->>>>>>> 0d64a83d68b00042db9dd681820de4cf181007e2
+import people.User; 
 import java.util.LinkedList;
 
 /**
@@ -17,23 +13,13 @@ import java.util.LinkedList;
 public class Library {
     // Private Attributes ---------------------------------------------------------------
     private String institute;
-<<<<<<< HEAD
-=======
-    private String address;
->>>>>>> 0d64a83d68b00042db9dd681820de4cf181007e2
     private LinkedList<Book> books;  // Might be substituted by a min-heap in the future.
     private LinkedList<Staff> staff;
     private LinkedList<User> users;
 
     // Constructor ----------------------------------------------------------------------
-<<<<<<< HEAD
     public Library(String institute) {
         this.institute = institute;
-=======
-    public Library(String institute, String address) {
-        this.institute = institute;
-        this.address = address;
->>>>>>> 0d64a83d68b00042db9dd681820de4cf181007e2
         this.books = new LinkedList<>();
         this.staff = new LinkedList<>();
         this.users = new LinkedList<>();
@@ -44,13 +30,6 @@ public class Library {
         return institute;
     }
 
-<<<<<<< HEAD
-=======
-    public String getAddress() {
-        return address;
-    }
-
->>>>>>> 0d64a83d68b00042db9dd681820de4cf181007e2
     public LinkedList<Book> getBooks() {
         return books;
     }

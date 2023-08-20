@@ -3,7 +3,7 @@ package library;
 import java.time.LocalDate;
 
 /**
- * Class that represents a journal belonging to a library.
+ * Class that represents a journal belonging to a library. 
  *
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  * @version 1.0
