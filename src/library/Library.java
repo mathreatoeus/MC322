@@ -2,7 +2,6 @@ package library;
 
 import people.Staff;
 import people.User;
-
 import java.util.LinkedList;
 
 /**
@@ -14,13 +13,15 @@ import java.util.LinkedList;
 public class Library {
     // Private Attributes ---------------------------------------------------------------
     private String institute;
+    private String address;
     private LinkedList<Book> books;  // Might be substituted by a min-heap in the future.
     private LinkedList<Staff> staff;
     private LinkedList<User> users;
 
     // Constructor ----------------------------------------------------------------------
-    public Library(String institute) {
+    public Library(String institute, String address) {
         this.institute = institute;
+        this.address = address;
         this.books = new LinkedList<>();
         this.staff = new LinkedList<>();
         this.users = new LinkedList<>();
@@ -29,6 +30,10 @@ public class Library {
     // Getters --------------------------------------------------------------------------
     public String getInstitute() {
         return institute;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public LinkedList<Book> getBooks() {
