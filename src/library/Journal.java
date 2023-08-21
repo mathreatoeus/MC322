@@ -24,7 +24,7 @@ import java.time.LocalDate;
     private LocalDate addedDate;
     
     // Constructor ----------------------------------------------------------------------
-    public Magazine(String title, String section,
+    public Journal(String title, String section,
                 String knowledgeArea, String publisher, int year, int month, int ncpys, int id) {
         this.title = title;
         this.section = section;
