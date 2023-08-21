@@ -91,10 +91,6 @@ import java.time.LocalDate;
         this.section = newSection;
     }
 
-    public void setGenre(String newGenre) {
-        this.genre = newGenre;
-    }
-
     public void setPublisher(String newPublisher) {
         this.publisher = newPublisher;
     }
