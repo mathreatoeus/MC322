@@ -93,8 +93,8 @@ public class Book {
         this.genre = newGenre;
     }
 
-    public void setNcpys() {
-        return ncpys;
+    public void setNcpys(int newNcpys) {
+        this.ncpys = newNcpys;
     }
 
     public void setId(int newId) {

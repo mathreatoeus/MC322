@@ -2,6 +2,12 @@ package people;
 
 import java.time.LocalDate;
 
+/**
+ * Class that represents a user from outside the University.
+ *
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
+ */
+
 public class ExternalUser extends Person {
     // Private Attributes ---------------------------------------------------------------
     private LocalDate expirationDate;
