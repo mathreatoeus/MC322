@@ -1,6 +1,6 @@
 package people;
 
-public class UniversityStaff extends Person {
+public class UniversityStaff extends User {
     private int uniStaffId;
 
     // Constructor ----------------------------------------------------------------------

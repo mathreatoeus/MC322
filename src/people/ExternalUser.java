@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
-public class ExternalUser extends Person {
+public class ExternalUser extends User {
     // Private Attributes ---------------------------------------------------------------
     private LocalDate expirationDate;
 

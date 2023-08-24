@@ -1,7 +1,5 @@
 package people;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 
 /**
@@ -20,7 +18,6 @@ abstract class Person {
     private String password;
     private boolean isSuspended;
     private LocalDate registrationDate;
-    private String memberId;
 
     // Constructor ----------------------------------------------------------------------
 
@@ -33,7 +30,6 @@ abstract class Person {
         this.password = password;
         this.isSuspended =  false;
         this.registrationDate = LocalDate.now();
-        this.memberId = generateId(this.username);
     }
 
     // Getters --------------------------------------------------------------------------
@@ -81,35 +77,7 @@ abstract class Person {
     // Methods --------------------------------------------------------------------------
 
     /**
-     * Takes a username and hashes it using SHA-256 to generate a secure ID.
-     *
-     * @param username User's personal username.
-     * @return hash Member's ID.
-     */
-    private String generateId(String username) {
-        try {
-            MessageDigest msgDigest = MessageDigest.getInstance(("SHA-256"));
-            byte[] hashBytes = msgDigest.digest(username.getBytes());
-
-            StringBuilder hexString = new StringBuilder();
-
-            for (byte b : hashBytes) {
-                String hex = Integer.toHexString(0xff & b);
-
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            return "none";
-        }
-    }
-
-    /**
-     * Method to try and change the current staff member's username upon authentication.
+     * Method to try and change the current user's username upon authentication.
      *
      * @param newUsername New desired username.
      * @param currentPassword This staff member's current password.
@@ -126,7 +94,7 @@ abstract class Person {
     }
 
     /**
-     * Method to try and change the current staff member's password upon authentication.
+     * Method to try and change the current user's password upon authentication.
      *
      * @param newPassword New desired password.
      * @param currentPassword This staff member's current password.

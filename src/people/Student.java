@@ -6,7 +6,7 @@ package people;
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
-public class Student extends Person {
+public class Student extends User {
     // Private Attributes ---------------------------------------------------------------
     private int ra;
     private boolean isGradStudent;

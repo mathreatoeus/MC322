@@ -1,6 +1,6 @@
 package people;
 
-public class FacultyUser extends Person {
+public class FacultyUser extends User {
     // Private Attributes ---------------------------------------------------------------
     private int facultyId;
 

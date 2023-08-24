@@ -1,7 +1,12 @@
 package library;
 
-import people.Staff;
-import people.User; 
+import jdk.management.jfr.FlightRecorderMXBean;
+import people.User;
+import people.Student;
+import people.ExternalUser;
+import people.FacultyUser;
+import people.LibraryStaff;
+import people.UniversityStaff;
 import java.util.LinkedList;
 
 /**
@@ -14,14 +19,14 @@ public class Library {
     // Private Attributes ---------------------------------------------------------------
     private String institute;
     private LinkedList<Book> books;  // Might be substituted by a min-heap in the future.
-    private LinkedList<Staff> staff;
+    private LinkedList<LibraryStaff> libStaff;
     private LinkedList<User> users;
 
     // Constructor ----------------------------------------------------------------------
     public Library(String institute) {
         this.institute = institute;
         this.books = new LinkedList<>();
-        this.staff = new LinkedList<>();
+        this.libStaff = new LinkedList<>();
         this.users = new LinkedList<>();
     }
 
@@ -34,8 +39,8 @@ public class Library {
         return books;
     }
 
-    public LinkedList<Staff> getStaff() {
-        return staff;
+    public LinkedList<LibraryStaff> getStaff() {
+        return libStaff;
     }
 
     public LinkedList<User> getUsers() {
@@ -43,11 +48,11 @@ public class Library {
     }
 
     // Setters --------------------------------------------------------------------------
-    public void setInstitute(String newInstitute) {
+    private void setInstitute(String newInstitute) {
         this.institute = newInstitute;
     }
 
-    // Methods --------------------------------------------------------------------------
+    // Methods -------------------------------------------------------------------------
 
     /**
      * Method to try and add a Book to the Library.
@@ -87,9 +92,9 @@ public class Library {
      * @param staffMember The new staff member to be added to the list.
      * @return true on success and false on failure.
      */
-    public boolean addStaff(Staff staffMember) {
-        if (!this.staff.contains(staffMember)) {
-            this.staff.add(staffMember);
+    public boolean addStaff(LibraryStaff staffMember) {
+        if (!this.libStaff.contains(staffMember)) {
+            this.libStaff.add(staffMember);
             return true;
         }
         else {
@@ -103,9 +108,9 @@ public class Library {
      * @param staffMember The staff member to be removed.
      * @return true on success and false on failure.
      */
-    public boolean removeStaff(Staff staffMember) {
-        if (this.staff.contains(staffMember)) {
-            this.staff.remove(staffMember);
+    public boolean removeStaff(LibraryStaff staffMember) {
+        if (this.libStaff.contains(staffMember)) {
+            this.libStaff.remove(staffMember);
             return true;
         }
         else {
