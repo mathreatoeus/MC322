@@ -3,8 +3,7 @@ package people;
 import java.time.LocalDate;
 
 /**
- * Class that represents a general person. Superclass of InternalUser, FacultyUser,
- * ExternalUser and Staff.
+ * Class that represents a general person. Superclass of User.
  *
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */

@@ -1,5 +1,11 @@
 package people;
 
+/**
+ * Class that represents a user who's a member of the University's staff
+ *
+ * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
+ */
+
 public class UniversityStaff extends User {
     private int uniStaffId;
 

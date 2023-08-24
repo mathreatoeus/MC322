@@ -4,7 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Class that represents a general User.
+ * Class that represents a general User. Superclass of ExternalUser, Student,
+ * FacultyUser and UniversityStaff.
  *
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
