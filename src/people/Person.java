@@ -11,16 +11,30 @@ import java.time.LocalDate;
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
-public class Person {
+abstract class Person {
     // Protected Attributes -------------------------------------------------------------
-    protected String name;
-    protected String surname;
-    protected String socialId;
-    protected String username;
-    protected String password;
-    protected boolean isSuspended;
-    protected LocalDate registrationDate;
-    protected String memberId;
+    private String name;
+    private String surname;
+    private String socialId;
+    private String username;
+    private String password;
+    private boolean isSuspended;
+    private LocalDate registrationDate;
+    private String memberId;
+
+    // Constructor ----------------------------------------------------------------------
+
+    public Person(String name, String surname, String socialId, String username,
+                  String password) {
+        this.name = name;
+        this.surname = surname;
+        this.socialId = socialId;
+        this.username = username;
+        this.password = password;
+        this.isSuspended =  false;
+        this.registrationDate = LocalDate.now();
+        this.memberId = generateId(this.username);
+    }
 
     // Getters --------------------------------------------------------------------------
     public String getName() {
@@ -31,7 +45,7 @@ public class Person {
         return surname;
     }
 
-    protected String getSocialId() {
+    private String getSocialId() {
         return socialId;
     }
 
@@ -52,11 +66,11 @@ public class Person {
     }
 
     // Setters --------------------------------------------------------------------------
-    protected void setUsername(String newUsername) {
+    private void setUsername(String newUsername) {
         this.username = newUsername;
     }
 
-    protected void setPassword(String newPassword) {
+    private void setPassword(String newPassword) {
         this.password = newPassword;
     }
 
@@ -72,7 +86,7 @@ public class Person {
      * @param username User's personal username.
      * @return hash Member's ID.
      */
-    protected String generateId(String username) {
+    private String generateId(String username) {
         try {
             MessageDigest msgDigest = MessageDigest.getInstance(("SHA-256"));
             byte[] hashBytes = msgDigest.digest(username.getBytes());

@@ -2,7 +2,6 @@ package people;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDate;
 
 /**
  * Class that represents a member of the library's staff.
@@ -10,23 +9,17 @@ import java.time.LocalDate;
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
-public class Staff extends Person {
+public class LibraryStaff extends Person {
     // Private Attributes ---------------------------------------------------------------
     private String staffId;
     private String sector;
 
     // Constructor ----------------------------------------------------------------------
-    public Staff(String name, String surname, String socialId, String username,
+    public LibraryStaff(String name, String surname, String socialId, String username,
                  String password, String sector) {
-        this.name = name;
-        this.surname = surname;
-        this.socialId = socialId;
-        this.username = username;
-        this.password = password;
+        super(name, surname, socialId, username, password);
+        this.staffId = generateStaffId(this.getUsername());
         this.sector = sector;
-        this.isSuspended = false;
-        this.registrationDate = LocalDate.now();
-        this.staffId = generateStaffId(this.username);
     }
 
     // Getters --------------------------------------------------------------------------
@@ -82,7 +75,7 @@ public class Staff extends Person {
      * @return true on success and false on failure.
      */
     private boolean changeSector(String newSector, String username, String password) {
-        if (this.username.equals(username) && this.password.equals(password)) {
+        if (this.getUsername().equals(username) && this.getPassword().equals(password)) {
             setSector(newSector);
             return true;
         }

@@ -15,15 +15,8 @@ public class ExternalUser extends Person {
     // Constructor ----------------------------------------------------------------------
     public ExternalUser(String name, String surname, String socialId, String username,
                         String password) {
-        this.name = name;
-        this.surname = surname;
-        this.socialId = socialId;
-        this.username = username;
-        this.password = password;
-        this.isSuspended = false;
-        this.registrationDate = LocalDate.now();
-        this.memberId = generateId(this.username);
-        this.expirationDate = this.registrationDate.plusMonths(6);
+        super(name, surname, socialId, username, password);
+        this.expirationDate = this.getRegistrationDate().plusMonths(6);
     }
 
     // Getters --------------------------------------------------------------------------
@@ -46,7 +39,7 @@ public class ExternalUser extends Person {
      * @return true on success and false on failure.
      */
     public boolean renewMembership(long amountOfTime) {
-        if (!this.isSuspended) {
+        if (!this.getIsSuspended()) {
             setExpirationDate(this.expirationDate.plusMonths(amountOfTime));
             return true;
         }
@@ -62,7 +55,7 @@ public class ExternalUser extends Person {
      * @return true on success and false on failure.
      */
     public boolean renewMembership() {
-        if (!this.isSuspended) {
+        if (!this.getIsSuspended()) {
             setExpirationDate(this.expirationDate.plusMonths(6));
             return true;
         }

@@ -7,11 +7,7 @@ public class FacultyUser extends Person {
     // Constructor ----------------------------------------------------------------------
     public FacultyUser(String name, String surname, String socialId, String username,
                        String password, int facultyId) {
-        this.name = name;
-        this.surname = surname;
-        this.socialId = socialId;
-        this.username = username;
-        this.password = password;
+        super(name, surname, socialId, username, password);
         this.facultyId = facultyId;
     }
 
