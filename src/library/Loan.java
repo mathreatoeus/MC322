@@ -40,15 +40,15 @@ public class Loan {
             this.item = item;
             this.item.incrementTimesBorrowed();
             this.item.setAvailable(false);
+
+            // Generating Report
+            Report newReport = new Report("Loan", this.user, this.item);
+            newReport.generateReport();
         }
         else {
             this.item = null;
             System.out.println("Sorry, that book is not currently available.");
         }
-
-        // Generating Report
-        Report newReport = new Report("Loan", this.user, this.book);
-        newReport.generateReport();
     }
 
     // Constructor (loan to a staff member)
