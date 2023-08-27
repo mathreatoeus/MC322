@@ -1,15 +1,12 @@
 package library;
 
-import java.time.LocalDate;
-
 /**
  * Class that represents a magazine belonging to a library. 
  *
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
- * @version 1.0
  */
 
-    public class Magazine extends Multimedia {
+public class Magazine extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String maganizeName;
     private String section;
@@ -28,7 +25,6 @@ import java.time.LocalDate;
         this.publisher = publisher;
         this.year = year;
         this.month = month;
-
     }
 
     // Getters -------------------------------------------------------------------------

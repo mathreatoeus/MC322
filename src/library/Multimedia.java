@@ -7,7 +7,6 @@ import java.time.LocalDate;
  * Magazine, News.
  * 
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
- * @version 1.0
  */
 
 abstract class Multimedia {

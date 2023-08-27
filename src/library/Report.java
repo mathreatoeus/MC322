@@ -16,27 +16,35 @@ import library.Multimedia;
 public class Report {
     // Private Attributes ---------------------------------------------------------------
     private String type;                                  // Loan, Renewal or Suspension.
+    private String reportTitle;
     private User user;                                                  // If applicable.
     private LibraryStaff libStaff;                                      // If applicable.
     private LocalDate emissionDate;
     private Multimedia item;
+    private Library library;
+    private static int instanceCount = 0;
 
     // Constructor (User) ---------------------------------------------------------------
-    public Report(String type, User user, Multimedia item) {
+    public Report(String type, User user, Multimedia item, Library library) {
         this.type = type;
+        this.reportTitle = this.type + "Report" + instanceCount;
         this.user = user;
         this.libStaff = null;
         this.item = item;
+        this.library = library;
         this.emissionDate = LocalDate.now();
+        instanceCount++;
     }
 
     // Constructor (Staff Member) -------------------------------------------------------
-    public Report(String type, LibraryStaff libStaff, Multimedia item) {
+    public Report(String type, LibraryStaff libStaff, Multimedia item, Library library) {
         this.type = type;
         this.user = null;
         this.libStaff = libStaff;
         this.emissionDate = LocalDate.now();
         this.item = item;
+        this.library = library;
+        instanceCount++;
     }
 
     // Getters --------------------------------------------------------------------------
@@ -50,6 +58,18 @@ public class Report {
 
     public LibraryStaff getLibStaff() {
         return libStaff;
+    }
+
+    public Multimedia getItem() {
+        return item;
+    }
+
+    public String getItemTitle() {
+        return item.getTitle();
+    }
+
+    public Library getLibrary() {
+        return library;
     }
 
     // Setters --------------------------------------------------------------------------
@@ -74,8 +94,8 @@ public class Report {
      * @return true on success and false on failure.
      */
     public boolean generateReport() {
-        // Creating the title.
-        String title = "---------- " + this.type + " Report ----------\n";
+        // Creating the Page's Title
+        String pageTitle = "---------- " + this.reportTitle + " ----------\n";
 
         // Creating the headers.
         String headers = "";
@@ -97,18 +117,21 @@ public class Report {
         String content = "";
 
         if (this.type.equals("Loan")) {
-            content = "User/Staff member has borrowed item '" + this.item.getTitle() + "'.";
+            content = "User/Staff member has borrowed item '" + this.item.getTitle() + "'" +
+            "from library " + this.library;
         }
         else if (this.type.equals("Renewal")) {
-            content = "User/Staff member has renewed item '" + this.item.getTitle() + "' for 7 days.";
+            content = "User/Staff member has renewed item '" + this.item.getTitle() + "' for 7 days" +
+            "from library " + this.library;
         }
         else {
             content = "User/Staff member has been suspended for 2 days.";
         }
 
+        // Creating the Report File
         try {
-            FileWriter writer = new FileWriter(this.type +"Report.txt");
-            writer.write(title + headers + content);
+            FileWriter writer = new FileWriter(this.reportTitle + ".txt");
+            writer.write(pageTitle + headers + content);
             writer.close();
             System.out.println("Report file generated successfully.");
             return true;

@@ -42,7 +42,7 @@ public class Loan {
             this.item.setAvailable(false);
 
             // Generating Report
-            Report newReport = new Report("Loan", this.user, this.item);
+            Report newReport = new Report("Loan", this.user, this.item, this.library);
             newReport.generateReport();
         }
         else {
@@ -67,7 +67,7 @@ public class Loan {
             this.item.setAvailable(false);
 
             // Generating Report
-            Report newReport = new Report("Loan", this.user, this.item);
+            Report newReport = new Report("Loan", this.user, this.item, this.library);
             newReport.generateReport();
         }
         else {
@@ -124,10 +124,12 @@ public class Loan {
             Report renewalReport;
 
             if (this.user != null) {
-                renewalReport = new Report("Renewal", this.user, this.item);
+                renewalReport = new Report("Renewal", this.user, this.item,
+                        this.library);
             }
             else {
-                renewalReport = new Report("Renewal", this.libStaffMember, this.item);
+                renewalReport = new Report("Renewal", this.libStaffMember, this.item,
+                        this.library);
             }
 
             renewalReport.generateReport();
@@ -151,11 +153,13 @@ public class Loan {
 
             if (this.user != null) {
                 this.user.setIsSuspended(true);
-                suspensionReport = new Report("Suspension", this.user, this.item);
+                suspensionReport = new Report("Suspension", this.user, this.item,
+                        this.library);
             }
             else {
                 this.libStaffMember.setIsSuspended(true);
-                suspensionReport = new Report("Suspension", this.libStaffMember, this.item);
+                suspensionReport = new Report("Suspension", this.libStaffMember, this.item,
+                        this.library);
             }
             suspensionReport.generateReport();
             return true;

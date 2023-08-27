@@ -196,9 +196,9 @@ public class Library {
      * @param dailyNewsToRemove DailyNews to be removed.
      * @return true on success and false on failure.
      */
-    public boolean removeNews(DailyNews DailyNewsToRemove) {
-        if (this.dailyNews.contains(DailyNewsToRemoveToRemove)) {
-            this.dailyNews.remove(DailyNewsToRemoveToRemove);
+    public boolean removeNews(DailyNews dailyNewsToRemove) {
+        if (this.dailyNews.contains(dailyNewsToRemove)) {
+            this.dailyNews.remove(dailyNewsToRemove);
             return true;
         }
         else {

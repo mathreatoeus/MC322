@@ -6,10 +6,9 @@ import java.time.LocalDate;
  * Class that represents a daily news belonging to a library. 
  *
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
- * @version 1.0
  */
 
-    public class DailyNews extends Multimedia {
+public class DailyNews extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String publisher;
     private String dayOfWeek;
@@ -51,14 +50,6 @@ import java.time.LocalDate;
     }
 
     // Setters -------------------------------------------------------------------------
-    public void setSection(String newSection) {
-        this.section = newSection;
-    }
-
-    public void setGenre(String newGenre) {
-        this.genre = newGenre;
-    }
-
     public void setPublisher(String newPublisher) {
         this.publisher = newPublisher;
     }
