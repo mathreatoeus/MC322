@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * @version 1.0
  */
 
-    public class News {
+public class News {
     // Private Attributes ---------------------------------------------------------------
     private String title;
     private String publisher;
@@ -24,7 +24,7 @@ import java.time.LocalDate;
     private LocalDate addedDate;
     
     // Constructor ----------------------------------------------------------------------
-    public Magazine(String title, String publisher, String dayOfWeek, int year, int ncpys, int month, int day, int id) {
+    public News(String title, String publisher, String dayOfWeek, int year, int ncpys, int month, int day, int id) {
         this.title = title;
         this.publisher = publisher;
         this.dayOfWeek = dayOfWeek;
@@ -85,14 +85,6 @@ import java.time.LocalDate;
     }
 
     // Setters -------------------------------------------------------------------------
-
-    public void setSection(String newSection) {
-        this.section = newSection;
-    }
-
-    public void setGenre(String newGenre) {
-        this.genre = newGenre;
-    }
 
     public void setPublisher(String newPublisher) {
         this.publisher = newPublisher;

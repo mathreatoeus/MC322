@@ -44,7 +44,7 @@ abstract class Person {
         return socialId;
     }
 
-    protected String getUsername() {
+    public String getUsername() {
         return username;
     }
 

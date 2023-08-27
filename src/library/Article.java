@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * @version 1.0
  */
 
-    public class Artcile {
+public class Article {
     // Private Attributes ---------------------------------------------------------------
     private String title;
     private String section;
@@ -20,13 +20,14 @@ import java.time.LocalDate;
     private int year;
     private int month;
     private int id;
+    private int ncpys;
     private boolean available;
     private int timesBorrowed;
     private LocalDate addedDate;
     
     // Constructor ----------------------------------------------------------------------
-    public Magazine(String title, String section,
-                String knowledgeArea, String publisher, private String educationalInstitution, String country, int year, int month, int id) {
+    public Article(String title, String section,
+                String knowledgeArea, String publisher, String educationalInstitution, String country, int year, int month, int id, int ncpys) {
         this.title = title;
         this.section = section;
         this.knowledgeArea = knowledgeArea;
@@ -94,10 +95,6 @@ import java.time.LocalDate;
 
     public void setSection(String newSection) {
         this.section = newSection;
-    }
-
-    public void setGenre(String newGenre) {
-        this.genre = newGenre;
     }
 
     public void setPublisher(String newPublisher) {

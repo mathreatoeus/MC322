@@ -21,7 +21,7 @@ public class User extends Person {      // Can't be abstract (must be imported b
     }
 
     // Getters --------------------------------------------------------------------------
-    private String getMemberId() {
+    public String getMemberId() {
         return memberId;
     }
 
