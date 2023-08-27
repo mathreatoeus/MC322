@@ -19,6 +19,10 @@ public class Library {
     // Private Attributes ---------------------------------------------------------------
     private String institute;
     private LinkedList<Book> books;  // Might be substituted by a min-heap in the future.
+    private LinkedList<AudibleContent> audibles;
+    private LinkedList<Magazine> magazines;
+    private LinkedList<DailyNews> dailyNews;
+    private LinkedList<Journal> journals;
     private LinkedList<LibraryStaff> libStaff;
     private LinkedList<User> users;
 
@@ -26,6 +30,10 @@ public class Library {
     public Library(String institute) {
         this.institute = institute;
         this.books = new LinkedList<>();
+        this.audibles = new LinkedList<>();
+        this.magazines = new LinkedList<>();
+        this.dailyNews = new LinkedList<>();
+        this.journals = new LinkedList<>();
         this.libStaff = new LinkedList<>();
         this.users = new LinkedList<>();
     }
@@ -37,6 +45,22 @@ public class Library {
 
     public LinkedList<Book> getBooks() {
         return books;
+    }
+
+    public LinkedList<AudibleContent> getAudibles() {
+        return audibles;
+    }
+
+    public LinkedList<Magazine> getMagazines() {
+        return magazines;
+    }
+
+    public LinkedList<News> getDailyNews() {
+        return dailyNews;
+    }
+
+    public LinkedList<Journal> getJournals() {
+        return journals;
     }
 
     public LinkedList<LibraryStaff> getStaff() {
@@ -79,6 +103,134 @@ public class Library {
     public boolean removeBook(Book bookToRemove) {
         if (this.books.contains(bookToRemove)) {
             this.books.remove(bookToRemove);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and add an AudibleContent to the Library.
+     *
+     * @param newAudible AudibleContent to be added.
+     * @return true on succcess and false on failure.
+     */
+    public boolean addAudible(AudibleContent newAudible) {
+        if (!this.audibles.contains(newAudible)) {
+            this.audibles.add(newAudible);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+        /**
+     * Method to try and remove an AudibleContent from the Library.
+     *
+     * @param audibleToRemove AudibleContent to be removed.
+     * @return true on success and false on failure.
+     */
+    public boolean removeAudible(Book audibleToRemove) {
+        if (this.audibles.contains(audibleToRemove)) {
+            this.audibles.remove(audibleToRemove);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and add a Magazine to the Library.
+     *
+     * @param newMagazine Magazine to be added.
+     * @return true on succcess and false on failure.
+     */
+    public boolean addMagazine(Magazine newMagazine) {
+        if (!this.magazines.contains(newMagazine)) {
+            this.magazines.add(newMagazine);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+        /**
+     * Method to try and remove a Magazine from the Library.
+     *
+     * @param magazineToRemove Magazine to be removed.
+     * @return true on success and false on failure.
+     */
+    public boolean removeMagazine(Magazine magazineToRemove) {
+        if (this.magazines.contains(magazineToRemove)) {
+            this.magazines.remove(magazineToRemove);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and add a DailyNews to the Library.
+     *
+     * @param newDailyNews News to be added.
+     * @return true on succcess and false on failure.
+     */
+    public boolean addDailyNews(DailyNews newDailyNews) {
+        if (!this.dailyNews.contains(newDailyNews)) {
+            this.dailyNews.add(newDailyNews);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+        /**
+     * Method to try and remove a DailyNews from the Library.
+     *
+     * @param dailyNewsToRemove News to be removed.
+     * @return true on success and false on failure.
+     */
+    public boolean removeNews(DailyNews DailyNewsToRemove) {
+        if (this.dailyNews.contains(DailyNewsToRemoveToRemove)) {
+            this.dailyNews.remove(DailyNewsToRemoveToRemove);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and add a Journal to the Library.
+     *
+     * @param newJournal Journal to be added.
+     * @return true on succcess and false on failure.
+     */
+    public boolean addJournal(Journal newJournal) {
+        if (!this.journals.contains(newJournal)) {
+            this.journals.add(newJournal);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+        /**
+     * Method to try and remove a Journal from the Library.
+     *
+     * @param journalToRemove Journal to be removed.
+     * @return true on success and false on failure.
+     */
+    public boolean removeJournal(Journal journalToRemove) {
+        if (this.journals.contains(journalToRemove)) {
+            this.journals.remove(journalToRemove);
             return true;
         }
         else {
