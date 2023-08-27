@@ -17,30 +17,32 @@ import library.Report;
 public class Loan {
     // Private Attributes ---------------------------------------------------------------
     private Library library;
-    private Book book;
+    private Multimedia item;
     private User user;                                                  // If applicable.
     private LibraryStaff libStaffMember;                                // If applicable.
     private LocalDate loanDate;
     private LocalDate retrievalDate;
     private byte amountOfRenewals;
+    private boolean retrieved;
 
     // Constructor (loan to user) ----------------------------------------------
-    public Loan(Library library, Book book, User user) {
+    public Loan(Library library, Multimedia item, User user) {
         this.library = library;
         this.user = user;
         this.libStaffMember = null;
         this.loanDate = LocalDate.now();
         this.retrievalDate = this.loanDate.plusDays(7);
         this.amountOfRenewals = 0;
+        this.retrieved = false;
 
         // Checking to see if the requested book is available for loan.
-        if (book.getAvailable()) {
-            this.book = book;
-            this.book.incrementTimesBorrowed();
-            this.book.setAvailable(false);
+        if (item.getAvailable()) {
+            this.item = item;
+            this.item.incrementTimesBorrowed();
+            this.item.setAvailable(false);
         }
         else {
-            this.book = null;
+            this.item = null;
             System.out.println("Sorry, that book is not currently available.");
         }
 
@@ -60,17 +62,17 @@ public class Loan {
 
         // Checking to see if the requested book is available for loan.
         if (book.getAvailable()) {
-            this.book = book;
-            this.book.incrementTimesBorrowed();
-            this.book.setAvailable(false);
+            this.item = book;
+            this.item.incrementTimesBorrowed();
+            this.item.setAvailable(false);
         }
         else {
-            this.book = null;
+            this.item = null;
             System.out.println("Sorry, that book is not currently available.");
         }
 
         // Generating Report
-        Report newReport = new Report("Loan", this.user, this.book);
+        Report newReport = new Report("Loan", this.user, this.item);
         newReport.generateReport();
     }
 
@@ -79,12 +81,12 @@ public class Loan {
         return library;
     }
 
-    public Book getBook() {
-        return book;
+    public Multimedia getItem() {
+        return item;
     }
 
     public String getBookTitle() {
-        return this.getBook().getTitle();
+        return this.getItem().getTitle();
     }
 
     public User getUser() {
@@ -133,13 +135,23 @@ public class Loan {
      *
      * @return true if it is and false if it isn't.
      */
-    public boolean checkExpiration() {
-        if (this.getRetrievalDate().equals(LocalDate.now())) {
-            this.book.setAvailable(true);
-            return false;
+    public boolean isExpired() {
+        if (LocalDate.now().isAfter(this.retrievalDate)) {
+            Report suspensionReport;
+
+            if (this.user != null) {
+                this.user.setIsSuspended(true);
+                suspensionReport = new Report("Suspension", this.user, this.item);
+            }
+            else {
+                this.libStaffMember.setIsSuspended(true);
+                suspensionReport = new Report("Suspension", this.libStaffMember, this.item);
+            }
+            suspensionReport.generateReport();
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 }
