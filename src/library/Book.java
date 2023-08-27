@@ -20,7 +20,7 @@ public class Book extends Multimedia {
     // Constructor ----------------------------------------------------------------------
     public Book(String title, String digitalContent, String authorName, String authorSurname, String section,
                 String genre, int edition, int ncpys, int id) {
-        super(title, digitalContent, npcys, id);
+        super(title, digitalContent, ncpys, id);
         this.authorName = authorName;
         this.authorSurname = authorSurname;
         this.section = section;
@@ -47,10 +47,6 @@ public class Book extends Multimedia {
 
     public int getEdition() {
         return edition;
-    }
-
-    public int getId() {
-        return id;
     }
 
     // Setters --------------------------------------------------------------------------

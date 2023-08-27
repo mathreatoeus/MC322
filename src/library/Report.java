@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import people.User;
 import people.LibraryStaff;
+import library.Multimedia;
 
 /**
  * Class that represents a report, which stores info on the Library's operation.
@@ -18,21 +19,24 @@ public class Report {
     private User user;                                                  // If applicable.
     private LibraryStaff libStaff;                                      // If applicable.
     private LocalDate emissionDate;
+    private Multimedia item;
 
     // Constructor (User) ---------------------------------------------------------------
-    public Report(String type, User user) {
+    public Report(String type, User user, Multimedia item) {
         this.type = type;
         this.user = user;
         this.libStaff = null;
+        this.item = item;
         this.emissionDate = LocalDate.now();
     }
 
     // Constructor (Staff Member) -------------------------------------------------------
-    public Report(String type, LibraryStaff libStaff) {
+    public Report(String type, LibraryStaff libStaff, Multimedia item) {
         this.type = type;
         this.user = null;
         this.libStaff = libStaff;
         this.emissionDate = LocalDate.now();
+        this.item = item;
     }
 
     // Getters --------------------------------------------------------------------------
@@ -86,9 +90,9 @@ public class Report {
         String content = "";
 
         if (this.type.equals("Loan")) {
-            content = "User/Staff member has borrowed item <item placeholder>.";
+            content = "User/Staff member has borrowed item " + this.item.getTitle();
         }
-        if (this.type.equals("Renewal")) {
+        else if (this.type.equals("Renewal")) {
             content = "User/Staff member has renewed item <item placeholder> for 7 days.";
         }
         else {

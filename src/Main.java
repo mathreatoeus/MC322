@@ -21,8 +21,11 @@ class Main {
         Student m244088 = new Student("Matheus", "Reato", "54.981.976-9",
                 "m244088@dac.unicamp.br", "Mp@5fg*9200769", 244088, false);
 
-        Report loanReport = new Report("Loan", m244088);
+        Library bif = new Library("IFGW");
 
-        loanReport.generateReport();
+        Book physics = new Book("Principles and Practice of Physics", "dunno", "Eric",
+                "Mazur", "Classical Physics", "Physics", 9, 10, 1);
+
+        Loan matheusLoan = new Loan(bif, physics, m244088);
     }
 }

@@ -6,6 +6,7 @@ import people.ExternalUser;
 import people.FacultyUser;
 import people.LibraryStaff;
 import people.UniversityStaff;
+import library.Report;
 
 /**
  * Class that represents a loan of a Book from a Library to a User.
@@ -42,6 +43,10 @@ public class Loan {
             this.book = null;
             System.out.println("Sorry, that book is not currently available.");
         }
+
+        // Generating Report
+        Report newReport = new Report("Loan", this.user, this.book);
+        newReport.generateReport();
     }
 
     // Constructor (loan to a staff member)
@@ -63,6 +68,10 @@ public class Loan {
             this.book = null;
             System.out.println("Sorry, that book is not currently available.");
         }
+
+        // Generating Report
+        Report newReport = new Report("Loan", this.user, this.book);
+        newReport.generateReport();
     }
 
     // Getters --------------------------------------------------------------------------
