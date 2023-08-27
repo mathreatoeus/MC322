@@ -55,7 +55,7 @@ public class Library {
         return magazines;
     }
 
-    public LinkedList<News> getDailyNews() {
+    public LinkedList<DailyNews> getDailyNews() {
         return dailyNews;
     }
 
@@ -177,7 +177,7 @@ public class Library {
     /**
      * Method to try and add a DailyNews to the Library.
      *
-     * @param newDailyNews News to be added.
+     * @param newDailyNews DailyNews to be added.
      * @return true on succcess and false on failure.
      */
     public boolean addDailyNews(DailyNews newDailyNews) {
@@ -193,7 +193,7 @@ public class Library {
         /**
      * Method to try and remove a DailyNews from the Library.
      *
-     * @param dailyNewsToRemove News to be removed.
+     * @param dailyNewsToRemove DailyNews to be removed.
      * @return true on success and false on failure.
      */
     public boolean removeNews(DailyNews DailyNewsToRemove) {
