@@ -66,6 +66,13 @@ public class Report {
     }
 
     // Methods --------------------------------------------------------------------------
+
+    /**
+     * Method that generates a .txt report file based on the situation. The file will be
+     * stored in the root directory.
+     *
+     * @return true on success and false on failure.
+     */
     public boolean generateReport() {
         // Creating the title.
         String title = "---------- " + this.type + " Report ----------\n";
@@ -74,7 +81,7 @@ public class Report {
         String headers = "";
 
         if (this.libStaff == null) {
-            headers = "User: " + this.user.getName() + this.user.getSurname() +
+            headers = "User: " + this.user.getName() + " " + this.user.getSurname() +
                     "\nMember ID: " + this.user.getMemberId() + "\nUsername: " +
                     this.user.getUsername() + "\nEmission Date: " + this.emissionDate + "\n";
         }
@@ -90,10 +97,10 @@ public class Report {
         String content = "";
 
         if (this.type.equals("Loan")) {
-            content = "User/Staff member has borrowed item " + this.item.getTitle();
+            content = "User/Staff member has borrowed item '" + this.item.getTitle() + "'.";
         }
         else if (this.type.equals("Renewal")) {
-            content = "User/Staff member has renewed item <item placeholder> for 7 days.";
+            content = "User/Staff member has renewed item '" + this.item.getTitle() + "' for 7 days.";
         }
         else {
             content = "User/Staff member has been suspended for 2 days.";

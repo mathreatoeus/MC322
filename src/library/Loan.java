@@ -65,15 +65,15 @@ public class Loan {
             this.item = book;
             this.item.incrementTimesBorrowed();
             this.item.setAvailable(false);
+
+            // Generating Report
+            Report newReport = new Report("Loan", this.user, this.item);
+            newReport.generateReport();
         }
         else {
             this.item = null;
             System.out.println("Sorry, that book is not currently available.");
         }
-
-        // Generating Report
-        Report newReport = new Report("Loan", this.user, this.item);
-        newReport.generateReport();
     }
 
     // Getters --------------------------------------------------------------------------
@@ -121,10 +121,20 @@ public class Loan {
         if (this.amountOfRenewals <= 5) {
             this.setRetrievalDate(this.retrievalDate.plusDays(7));
             this.amountOfRenewals++;
+            Report renewalReport;
 
+            if (this.user != null) {
+                renewalReport = new Report("Renewal", this.user, this.item);
+            }
+            else {
+                renewalReport = new Report("Renewal", this.libStaffMember, this.item);
+            }
+
+            renewalReport.generateReport();
             return true;
         }
         else {
+            System.out.println("You can only renew this item 5 times via web.");
             return false;
         }
     }
