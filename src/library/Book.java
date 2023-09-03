@@ -12,15 +12,28 @@ public class Book extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String authorSurname; // Author's name has been separated to ease user input.
     private String section;
+    private Strint conservation;
     private int edition;
+    private int isbn;
+
+    // Eletrônic book
+    private String compatibleApps;
+    private int ncpysAvailable;
+    private int nLicenses;
 
     // Constructor ----------------------------------------------------------------------
-    public Book(String title, String digitalContent, String author, String publishingCompany, String genre, String summary, String cover, , String authorName, String authorSurname, String section,
-                , int edition, int yearOfPublication, int ncpys, int id) {
-        super(title, digitalContent, ncpys, id);
+    public Book(String title, String digitalContent, String author, String publishingCompany, String genre, String summary, String cover,
+                String authorName, String authorSurname, String section, String whereToFound, String conservation, String compatibleApps,
+                int edition, int yearOfPublication, int ncpys, int id, int isbn, int ncpysAvailable, int nLicenses) {
+        super(title, digitalContent, author, publishingCompany, genre, summary, cover, whereToFound, ncpys, id);
         this.authorSurname = authorSurname;
-        this.section = section;
+        this.section = section;        
+        this.conservation = conservation;
+        this.compatibleApps = compatibleApps;
         this.edition = edition;
+        this.isbn = isbn;
+        this.ncpysAvailable = ncpysAvailable;
+        this.nLicenses = nLicenses;
     }
 
     // Getters --------------------------------------------------------------------------
@@ -32,8 +45,28 @@ public class Book extends Multimedia {
         return section;
     }
 
+    public String getConservation() {
+        return conservation;
+    }
+
+    public String getCompatibleApps() {
+        return compatibleApps;
+    }
+
     public int getEdition() {
         return edition;
+    }
+
+    public int getIsbn() {
+        return isbn;
+    }
+
+    public int getNcpysAvailable() {
+        return ncpysAvailable;
+    }
+
+    public int getNLicenses() {
+        return nLicenses;
     }
 
     // Setters --------------------------------------------------------------------------
@@ -41,8 +74,24 @@ public class Book extends Multimedia {
         this.section = newSection;
     }
 
-    public void setGenre(String newGenre) {
-        this.genre = newGenre;
+    public void setConservation(String newConservation) {
+        this.conservation = newConservation;
+    }
+
+    public void setCompatibleApps(String newCompatibleApps) {
+        this.compatibleApps = newCompatibleApps;
+    }
+
+    public void setIsbn(int newIsbn) {
+        this.isbn = newIsbn;
+    }
+
+    public void setNcpysAvailable(int newNcpysAvailable) {
+        this.ncpysAvailable = newNcpysAvailable;
+    }
+
+    public void setNLicenses(int newNLicenses) {
+        this.nLicenses = newNLicenses;
     }
 
     // Methods --------------------------------------------------------------------------

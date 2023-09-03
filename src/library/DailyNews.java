@@ -11,23 +11,31 @@ import java.time.LocalDate;
 public class DailyNews extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String dayOfWeek;
+    private String conservation;
     private int monthOfPublication;
     private int dayOfPublication;
+    private int ncpysAvailable;
     
     // Constructor ----------------------------------------------------------------------
     public DailyNews(String title, String digitalContent, String author, String publishingCompany, String genre, String summary, 
-                     String cover, String dayOfWeek, int yearOfPublication, int ncpys, int monthOfPublication, int dayOfPublication,
-                     int id) {
-        super(title, digitalContent, author, genre, summary, cover, yearOfPublication, ncpys, id);
+                     String cover, String dayOfWeek, String whereToFound, String conservation, int yearOfPublication, int ncpys, 
+                     int monthOfPublication, int dayOfPublication, int id) {
+        super(title, digitalContent, author, genre, summary, cover, whereToFound, yearOfPublication, ncpys, id);
         this.dayOfWeek = dayOfWeek;
+        this.conservation = conservation;
         this.month = monthOfPublication;
         this.day = dayOfPublication;
+        this.ncpysAvailable = ncpysAvailable;
 
     }
 
     // Getters -------------------------------------------------------------------------
     public String getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public String getConservation() {
+        return conservation;
     }
 
     public int getMonthOfPublication() {
@@ -38,7 +46,17 @@ public class DailyNews extends Multimedia {
         return dayOfPublication;
     }
 
-    // Setters -------------------------------------------------------------------------
+    public int ncpysAvailable() {
+        return ncpysAvailable;
+    }
 
+    // Setters -------------------------------------------------------------------------
+    public void setConservation(String newConservation) {
+        this.conservation = newConservation;
+    }
+
+    public void setNcpysAvailable(String newNcpysAvailable) {
+        this.ncpysAvailable = newNcpysAvailable;
+    }
     // Methods --------------------------------------------------------------------------
 }
