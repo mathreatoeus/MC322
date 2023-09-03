@@ -12,19 +12,16 @@ public class Journal extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String section;
     private String knowledgeArea;
-    private String publisher;
-    private int year;
-    private int month;  
+    private int monthOfPublication;  
     
     // Constructor ----------------------------------------------------------------------
-    public Journal(String title, String digitalContent, String section,
-                String knowledgeArea, String publisher, int year, int month, int ncpys, int id) {
-        super(title, digitalContent, ncpys, id);
+    public Journal(String title, String digitalContent, String author, String publishingCompany, String genre, String summary, String cover, String section,
+                String knowledgeArea, int monthOfPublication, int yearOfPublication, int ncpys, int id) {
+        super(title, digitalContent, author, publishingCompany, genre, summary, cover, yearOfPublication, ncpys, id);
         this.section = section;
         this.knowledgeArea = knowledgeArea;
         this.publisher = publisher;
-        this.year = year;
-        this.month = month;
+        this.month = monthOfPublication;
 
     }
 
@@ -37,25 +34,13 @@ public class Journal extends Multimedia {
         return knowledgeArea;
     }
 
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getMonth() {
-        return month;
+    public int getMonthOfPublication() {
+        return monthOfPublication;
     }
 
     // Setters -------------------------------------------------------------------------
     public void setSection(String newSection) {
         this.section = newSection;
-    }
-
-    public void setPublisher(String newPublisher) {
-        this.publisher = newPublisher;
     }
 
     // Methods --------------------------------------------------------------------------

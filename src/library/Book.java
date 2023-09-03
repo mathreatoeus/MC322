@@ -10,38 +10,26 @@ import java.time.LocalDate;
 
 public class Book extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
-    private String authorName;
     private String authorSurname; // Author's name has been separated to ease user input.
     private String section;
-    private String genre;
     private int edition;
 
     // Constructor ----------------------------------------------------------------------
-    public Book(String title, String digitalContent, String authorName, String authorSurname, String section,
-                String genre, int edition, int ncpys, int id) {
+    public Book(String title, String digitalContent, String author, String publishingCompany, String genre, String summary, String cover, , String authorName, String authorSurname, String section,
+                , int edition, int yearOfPublication, int ncpys, int id) {
         super(title, digitalContent, ncpys, id);
-        this.authorName = authorName;
         this.authorSurname = authorSurname;
         this.section = section;
-        this.genre = genre;
         this.edition = edition;
     }
 
     // Getters --------------------------------------------------------------------------
-    public String getAuthorName() {
-        return authorName;
-    }
-
     public String getAuthorSurname() {
         return authorSurname;
     }
 
     public String getSection() {
         return section;
-    }
-
-    public String getGenre() {
-        return genre;
     }
 
     public int getEdition() {

@@ -10,21 +10,16 @@ public class Magazine extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String maganizeName;
     private String section;
-    private String genre;
-    private String publisher;
-    private int year;
-    private int month;
+    private int monthOfPublication;
     
     // Constructor ----------------------------------------------------------------------
-    public Magazine(String title, String digitalContent, String magazineName, String section,
-                String genre, String publisher, int year, int month, int ncpys, int id) {
-        super(title, digitalContent, ncpys, id);
+    public Magazine(String title, String digitalContent, String author, String publishingCompany, String genre, String summary,
+                    String cover, String magazineName, String section, String publisher, int yearOfPublication, 
+                    int monthOfPublication, int ncpys, int id) {
+        super(title, digitalContent, author, publishingCompany, genre, summary, cover, yearOfPublication, ncpys, id);
         this.maganizeName = magazineName;
         this.section = section;
-        this.genre = genre;
-        this.publisher = publisher;
-        this.year = year;
-        this.month = month;
+
     }
 
     // Getters -------------------------------------------------------------------------
@@ -36,20 +31,8 @@ public class Magazine extends Multimedia {
         return section;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getMonth() {
-        return month;
+    public int getMonthOfPublication() {
+        return monthOfPublication;
     }
 
     // Setters -------------------------------------------------------------------------
@@ -57,12 +40,8 @@ public class Magazine extends Multimedia {
         this.section = newSection;
     }
 
-    public void setGenre(String newGenre) {
-        this.genre = newGenre;
-    }
-
-    public void setPublisher(String newPublisher) {
-        this.publisher = newPublisher;
+    public void setMonthOfPublication(int newMonthOfPublication) {
+        this.monthOfPublication = newMonthOfPublication;
     }
 
     // Methods --------------------------------------------------------------------------
