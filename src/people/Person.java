@@ -18,6 +18,7 @@ abstract class Person {
     private String address;
     private String email;
     private String phoneNumber;
+    private int numberOfActiveLoans;
     private boolean isSuspended;
     private LocalDate registrationDate;
 
@@ -34,6 +35,7 @@ abstract class Person {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.numberOfActiveLoans = 0;
         this.isSuspended =  false;
         this.registrationDate = LocalDate.now();
     }

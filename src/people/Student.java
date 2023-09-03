@@ -19,4 +19,13 @@ public class Student extends User {
         this.ra = ra;
         this.isGradStudent = isGradStudent;
     }
+
+    // Getters
+    public int getRa() {
+        return ra;
+    }
+
+    public boolean getIsGradStudent() {
+        return isGradStudent;
+    }
 }

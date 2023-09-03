@@ -1,11 +1,8 @@
 package library;
 
 import java.time.LocalDate;
-import people.User;
-import people.ExternalUser;
-import people.FacultyUser;
-import people.LibraryStaff;
-import people.UniversityStaff;
+
+import people.*;
 import library.Report;
 
 /**
@@ -31,7 +28,6 @@ public class Loan {
         this.user = user;
         this.libStaffMember = null;
         this.loanDate = LocalDate.now();
-        this.retrievalDate = this.loanDate.plusDays(7);
         this.amountOfRenewals = 0;
         this.retrieved = false;
 
@@ -40,14 +36,29 @@ public class Loan {
             this.item = item;
             this.item.incrementTimesBorrowed();
             this.item.setAvailable(false);
-
-            // Generating Report
-            Report newReport = new Report("Loan", this.user, this.item, this.library);
-            newReport.generateReport();
         }
         else {
             this.item = null;
             System.out.println("Sorry, that book is not currently available.");
+        }
+
+        // Determining the retrieval date.
+        if (user instanceof people.Student) {
+            if (((Student) user).getIsGradStudent()) {
+                this.retrievalDate = this.loanDate.plusDays(20);
+            }
+            else {
+                this.retrievalDate = this.loanDate.plusDays(15);
+            }
+        }
+        else if (this.user instanceof people.FacultyUser) {
+            this.retrievalDate = this.loanDate.plusDays(30);
+        }
+        else if (this.user instanceof people.UniversityStaff) {
+            this.retrievalDate = this.loanDate.plusDays(20);
+        }
+        else {   // External User.
+            this.retrievalDate = this.loanDate.plusDays(7);
         }
     }
 
@@ -57,7 +68,7 @@ public class Loan {
         this.user = null;
         this.libStaffMember = staff;
         this.loanDate = LocalDate.now();
-        this.retrievalDate = this.loanDate.plusDays(7);
+        this.retrievalDate = this.loanDate.plusDays(20);
         this.amountOfRenewals = 0;
 
         // Checking to see if the requested book is available for loan.
@@ -65,10 +76,6 @@ public class Loan {
             this.item = book;
             this.item.incrementTimesBorrowed();
             this.item.setAvailable(false);
-
-            // Generating Report
-            Report newReport = new Report("Loan", this.user, this.item, this.library);
-            newReport.generateReport();
         }
         else {
             this.item = null;
