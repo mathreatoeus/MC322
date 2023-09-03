@@ -15,8 +15,8 @@ public class User extends Person {      // Can't be abstract (must be imported b
 
     // Constructor ----------------------------------------------------------------------
     public User(String name, String surname, String socialId, String username,
-                String password) {
-        super(name, surname, socialId, username, password);
+                String password, String address, String email, String phoneNumber) {
+        super(name, surname, socialId, username, password, address, email, phoneNumber);
         this.memberId = generateId(username);
     }
 

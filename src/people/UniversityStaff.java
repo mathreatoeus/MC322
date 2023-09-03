@@ -11,8 +11,9 @@ public class UniversityStaff extends User {
 
     // Constructor ----------------------------------------------------------------------
     public UniversityStaff(String name, String surname, String socialId, String username,
-                           String password, int uniStaffId) {
-        super(name, surname, socialId, username, password);
+                           String password, String address, String email, String phoneNumber,
+                           int uniStaffId) {
+        super(name, surname, socialId, username, password, address, email, phoneNumber);
         this.uniStaffId = uniStaffId;
     }
 

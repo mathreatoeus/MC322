@@ -16,8 +16,9 @@ public class LibraryStaff extends Person {
 
     // Constructor ----------------------------------------------------------------------
     public LibraryStaff(String name, String surname, String socialId, String username,
-                 String password, String sector) {
-        super(name, surname, socialId, username, password);
+                        String password, String address, String email, String phoneNumber,
+                        String sector) {
+        super(name, surname, socialId, username, password, address, email, phoneNumber);
         this.staffId = generateStaffId(this.getUsername());
         this.sector = sector;
     }

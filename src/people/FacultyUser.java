@@ -12,8 +12,9 @@ public class FacultyUser extends User {
 
     // Constructor ----------------------------------------------------------------------
     public FacultyUser(String name, String surname, String socialId, String username,
-                       String password, int facultyId) {
-        super(name, surname, socialId, username, password);
+                       String password, String address, String email, String phoneNumber,
+                       int facultyId) {
+        super(name, surname, socialId, username, password, address, email, phoneNumber);
         this.facultyId = facultyId;
     }
 

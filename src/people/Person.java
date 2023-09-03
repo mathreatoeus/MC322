@@ -15,17 +15,24 @@ abstract class Person {
     private String socialId;
     private String username;
     private String password;
+    private String address;
+    private String email;
+    private String phoneNumber;
     private boolean isSuspended;
     private LocalDate registrationDate;
 
     // Constructor ----------------------------------------------------------------------
 
     public Person(String name, String surname, String socialId, String username,
-                  String password) {
+                  String password, String address, String email, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.socialId = socialId;
         this.username = username;
+        this.password = password;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.password = password;
         this.isSuspended =  false;
         this.registrationDate = LocalDate.now();
@@ -50,6 +57,18 @@ abstract class Person {
 
     protected String getPassword() {
         return password;
+    }
+
+    private String getAddress() {
+        return address;
+    }
+
+    private String getEmail() {
+        return email;
+    }
+
+    private String getPhoneNumber() {
+        return phoneNumber;
     }
 
     protected boolean getIsSuspended() {

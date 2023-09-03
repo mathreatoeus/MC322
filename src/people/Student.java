@@ -13,8 +13,9 @@ public class Student extends User {
 
     // Constructor ----------------------------------------------------------------------
     public Student(String name, String surname, String socialId, String username,
-                String password, int ra, boolean isGradStudent) {
-        super(name, surname, socialId, username, password);
+                   String password, String address, String email, String phoneNumber,
+                   int ra, boolean isGradStudent) {
+        super(name, surname, socialId, username, password, address, email, phoneNumber);
         this.ra = ra;
         this.isGradStudent = isGradStudent;
     }
