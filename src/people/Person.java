@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
-abstract class Person {
+abstract public class Person {
     // Protected Attributes -------------------------------------------------------------
     private String name;
     private String surname;

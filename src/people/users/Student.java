@@ -1,4 +1,4 @@
-package people;
+package people.users;
 
 /**
  * Class that represents a registered library user.

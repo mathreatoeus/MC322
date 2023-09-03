@@ -1,12 +1,8 @@
 package library;
 
-import jdk.management.jfr.FlightRecorderMXBean;
-import people.User;
-import people.Student;
-import people.ExternalUser;
-import people.FacultyUser;
-import people.LibraryStaff;
-import people.UniversityStaff;
+import people.users.User;
+import people.staff.LibraryStaff;
+
 import java.util.LinkedList;
 
 /**

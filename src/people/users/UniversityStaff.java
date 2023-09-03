@@ -1,4 +1,4 @@
-package people;
+package people.users;
 
 /**
  * Class that represents a user who's a member of the University's staff

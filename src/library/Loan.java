@@ -2,8 +2,11 @@ package library;
 
 import java.time.LocalDate;
 
-import people.*;
-import library.Report;
+import people.staff.LibraryStaff;
+import people.users.FacultyUser;
+import people.users.Student;
+import people.users.UniversityStaff;
+import people.users.User;
 
 /**
  * Class that represents a loan of a Book from a Library to a User.
@@ -43,7 +46,7 @@ public class Loan {
         }
 
         // Determining the retrieval date.
-        if (user instanceof people.Student) {
+        if (user instanceof Student) {
             if (((Student) user).getIsGradStudent()) {
                 this.retrievalDate = this.loanDate.plusDays(20);
             }
@@ -51,10 +54,10 @@ public class Loan {
                 this.retrievalDate = this.loanDate.plusDays(15);
             }
         }
-        else if (this.user instanceof people.FacultyUser) {
+        else if (this.user instanceof FacultyUser) {
             this.retrievalDate = this.loanDate.plusDays(30);
         }
-        else if (this.user instanceof people.UniversityStaff) {
+        else if (this.user instanceof UniversityStaff) {
             this.retrievalDate = this.loanDate.plusDays(20);
         }
         else {   // External User.

@@ -1,4 +1,7 @@
-package people;
+package people.staff;
+
+import people.Person;
+import people.staff.StaffLevel;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -13,14 +16,16 @@ public class LibraryStaff extends Person {
     // Private Attributes ---------------------------------------------------------------
     private String staffId;
     private String sector;
+    private StaffLevel staffLevel;
 
     // Constructor ----------------------------------------------------------------------
     public LibraryStaff(String name, String surname, String socialId, String username,
                         String password, String address, String email, String phoneNumber,
-                        String sector) {
+                        String sector, StaffLevel staffLevel) {
         super(name, surname, socialId, username, password, address, email, phoneNumber);
         this.staffId = generateStaffId(this.getUsername());
         this.sector = sector;
+        this.staffLevel = staffLevel;
     }
 
     // Getters --------------------------------------------------------------------------
@@ -31,10 +36,17 @@ public class LibraryStaff extends Person {
     public String getSector() {
         return sector;
     }
+    public StaffLevel getStaffLevel() {
+        return staffLevel;
+    }
 
     // Setters  -------------------------------------------------------------------------
     private void setSector(String newSector) {
         this.sector = newSector;
+    }
+
+    private void setStaffLevel(StaffLevel newStaffLevel) {
+        this.staffLevel = newStaffLevel;
     }
 
     // Methods --------------------------------------------------------------------------
