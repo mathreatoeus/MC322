@@ -1,15 +1,14 @@
 package library.management;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import library.Book;
 import library.Library;
 import library.Multimedia;
 import people.staff.LibraryStaff;
-import people.users.FacultyUser;
-import people.users.Student;
-import people.users.UniversityStaff;
-import people.users.User;
+import people.staff.StaffLevel;
+import people.users.*;
 
 /**
  * Class that represents a loan of a Book from a Library to a User. The retrieval date will
@@ -35,7 +34,7 @@ public class Loan {
         this.amountOfRenewals = 0;
         this.retrieved = false;
 
-        // Checking to see if the loan is possible.
+        // Evaluating each possible case.
         boolean isPossible = true;
 
         if (item.getAvailable() && !user.getIsSuspended()) {
@@ -98,6 +97,7 @@ public class Loan {
                     " item is not available at the moment or you have been suspended.");
         }
 
+        // Taking action based on the isPossible flag.
         if (isPossible) {
             this.library = library;
             this.item = item;
@@ -123,7 +123,6 @@ public class Loan {
         this.amountOfRenewals = 0;
         this.retrieved = false;
 
-        // Checking to see if the loan is possible.
         if (item.getAvailable() && !staff.getIsSuspended() && staff.getNumberOfActiveLoans() < 4) {
             this.library = library;
             this.item = item;
@@ -175,6 +174,10 @@ public class Loan {
         return retrievalDate;
     }
 
+    public boolean getRetrieved() {
+        return retrieved;
+    }
+
     // Setters --------------------------------------------------------------------------
     public void setRetrievalDate(LocalDate newRetrievalDate) {
         this.retrievalDate = newRetrievalDate;
@@ -188,10 +191,12 @@ public class Loan {
      * @return true on success and false on failure.
      */
     public boolean renewLoan() {
+        // If the loan was made by a User object.
         if (this.user != null) {
             if ((this.item).getReserves().isEmpty() && !(this.user).getIsSuspended()) {
                 this.amountOfRenewals++;
 
+                // Evaluating each possible case for user.
                 if (this.user instanceof Student) {
                     if (((Student) this.user).getIsGradStudent()) {
                         this.retrievalDate = this.retrievalDate.plusDays(20);
@@ -219,6 +224,7 @@ public class Loan {
                 return false;
             }
         }
+        // If the loan was made by a LibraryStaff object.
         else {
             if ((this.item).getReserves().isEmpty() && !this.libStaffMember.getIsSuspended()) {
                 this.retrievalDate = this.retrievalDate.plusDays(20);
@@ -242,6 +248,6 @@ public class Loan {
      * @return true if it is and false if it isn't.
      */
     public boolean isExpired() {
-        return true;
+        return (LocalDate.now()).isAfter(this.retrievalDate);
     }
 }

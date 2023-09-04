@@ -19,6 +19,7 @@ abstract public class Person {
     private String email;
     private String phoneNumber;
     private int numberOfActiveLoans;
+    private double totalFines;
     private boolean isSuspended;
     private LocalDate registrationDate;
 
@@ -38,6 +39,7 @@ abstract public class Person {
         this.numberOfActiveLoans = 0;
         this.isSuspended =  false;
         this.registrationDate = LocalDate.now();
+        this.totalFines = 0;
     }
 
     // Getters --------------------------------------------------------------------------
@@ -57,7 +59,7 @@ abstract public class Person {
         return username;
     }
 
-    protected String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -75,6 +77,10 @@ abstract public class Person {
 
     public int getNumberOfActiveLoans() {
         return numberOfActiveLoans;
+    }
+
+    public double getTotalFines() {
+        return totalFines;
     }
 
     public boolean getIsSuspended() {
@@ -100,6 +106,10 @@ abstract public class Person {
 
     private void setNumberOfActiveLoans(int num) {
         this.numberOfActiveLoans = num;
+    }
+
+    public void setTotalFines(double newTotalFines) {
+        this.totalFines = newTotalFines;
     }
 
     // Methods --------------------------------------------------------------------------

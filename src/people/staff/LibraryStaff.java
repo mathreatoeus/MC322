@@ -2,9 +2,16 @@ package people.staff;
 
 import people.Person;
 import people.staff.StaffLevel;
+import library.management.Loan;
+import people.users.ExternalUser;
+import people.users.FacultyUser;
+import people.users.Student;
+import people.users.UniversityStaff;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Class that represents a member of the library's staff.
@@ -94,6 +101,55 @@ public class LibraryStaff extends Person {
         }
         else {
             return false;
+        }
+    }
+
+    /**
+     * Method that checks if a loan made by a user or staff member is expired and the item
+     * hasn't been returned yet, in which case the user or staff member will be suspended
+     * and fined accordingly. The staff member performing this operation must be an ADMINISTRATOR.
+     *
+     * @param loan the loan to be examined.
+     */
+    public void fineUser(Loan loan) {
+        // Checking the staff member's level.
+        if (this.getStaffLevel() == StaffLevel.ADMINISTRATOR) {
+            if (loan.isExpired() && !loan.getRetrieved()) {
+                // Determining the amount of days by which the retrieval is late.
+                long amountOfDays = ChronoUnit.DAYS.between(loan.getRetrievalDate(),
+                        LocalDate.now());
+
+                // If the loan was made by a user.
+                if (loan.getUser() != null) {
+                    (loan.getUser()).setIsSuspended(true);
+
+                    if (loan.getUser() instanceof Student || loan.getUser() instanceof ExternalUser) {
+                        (loan.getUser()).setTotalFines(amountOfDays * 1.0);
+                    }
+                    else if (loan.getUser() instanceof FacultyUser) {
+                        (loan.getUser()).setTotalFines(amountOfDays * 0.5);
+                    }
+                    else if (loan.getUser() instanceof UniversityStaff) {
+                        (loan.getUser()).setTotalFines(amountOfDays * 0.75);
+                    }
+                    return;
+                }
+                // If the loan was made by a member of staff.
+                else {
+                    (loan.getStaff()).setIsSuspended(true);
+                    (loan.getStaff()).setTotalFines(amountOfDays * 0.75);
+                    return;
+                }
+            }
+            else {
+                System.out.println("This loan is either not expired or the item has already" +
+                        " been returned.");
+                return;
+            }
+        }
+        else {
+            System.out.println("You must be an ADMINISTRATOR to perform this operation.");
+            return;
         }
     }
 }
