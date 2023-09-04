@@ -12,7 +12,8 @@ import people.users.UniversityStaff;
 import people.users.User;
 
 /**
- * Class that represents a loan of a Book from a Library to a User.
+ * Class that represents a loan of a Book from a Library to a User. The retrieval date will
+ * be null if the loan can't be completed.
  *
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
@@ -28,64 +29,120 @@ public class Loan {
     private byte amountOfRenewals;
     private boolean retrieved;
 
-    // Constructor (loan to user) ----------------------------------------------
+    // Constructor (loan to user) -------------------------------------------------------
     public Loan(Library library, Multimedia item, User user) {
-        this.library = library;
-        this.user = user;
-        this.libStaffMember = null;
         this.loanDate = LocalDate.now();
         this.amountOfRenewals = 0;
         this.retrieved = false;
 
-        // Checking to see if the requested book is available for loan.
-        if (item.getAvailable()) {
-            this.item = item;
-            this.item.incrementTimesBorrowed();
-            this.item.setAvailable(false);
+        // Checking to see if the loan is possible.
+        boolean isPossible = true;
+
+        if (item.getAvailable() && !user.getIsSuspended()) {
+            if (user instanceof Student) {
+                if (((Student) user).getIsGradStudent() && user.getNumberOfActiveLoans() < 5) {
+                    this.retrievalDate = this.loanDate.plusDays(20);
+                }
+                else if (((Student) user).getIsGradStudent() && user.getNumberOfActiveLoans() < 3) {
+                    this.retrievalDate = this.loanDate.plusDays(15);
+                }
+                else {
+                    isPossible = false;
+
+                    System.out.println("Sorry, the loan cannot be completed because you" +
+                            " have reached the maximum amount of simultaneous loans");
+                }
+            }
+            else if (user instanceof FacultyUser) {
+                if (user.getNumberOfActiveLoans() < 7) {
+                    this.retrievalDate = this.loanDate.plusDays(30);
+                }
+                else {
+                    isPossible = false;
+
+                    System.out.println("Sorry, the loan cannot be completed because you" +
+                            " have reached the maximum amount of simultaneous loans");
+                }
+            }
+            else if (user instanceof UniversityStaff) {
+                if (user.getNumberOfActiveLoans() < 4) {
+                    this.retrievalDate = this.loanDate.plusDays(20);
+                }
+                else {
+                    isPossible = false;
+
+                    System.out.println("Sorry, the loan cannot be completed because you" +
+                            " have reached the maximum amount of simultaneous loans");
+                }
+            }
+            else { // External User
+                if (user.getNumberOfActiveLoans() < 3) {
+                    this.retrievalDate = this.loanDate.plusDays(7);
+                }
+                else {
+                    isPossible = false;
+
+                    System.out.println("Sorry, the loan cannot be completed because you" +
+                            " have reached the maximum amount of simultaneous loans");
+                }
+            }
         }
         else {
+            this.library = null;
             this.item = null;
-            System.out.println("Sorry, that book is not currently available.");
+            this.user = null;
+            this.libStaffMember = null;
+            this.retrievalDate = null;
+
+            System.out.println("Sorry, the loan cannot be completed either because the" +
+                    " item is not available at the moment or you have been suspended.");
         }
 
-        // Determining the retrieval date.
-        if (user instanceof Student) {
-            if (((Student) user).getIsGradStudent()) {
-                this.retrievalDate = this.loanDate.plusDays(20);
-            }
-            else {
-                this.retrievalDate = this.loanDate.plusDays(15);
-            }
+        if (isPossible) {
+            this.library = library;
+            this.item = item;
+            this.user = user;
+            this.libStaffMember = null;
+
+            this.item.setAvailable(false);
+            this.user.incrementActiveLoans();
         }
-        else if (this.user instanceof FacultyUser) {
-            this.retrievalDate = this.loanDate.plusDays(30);
+        else {
+            this.library = null;
+            this.item = null;
+            this.user = null;
+            this.libStaffMember = null;
+            this.retrievalDate = null;
         }
-        else if (this.user instanceof UniversityStaff) {
-            this.retrievalDate = this.loanDate.plusDays(20);
-        }
-        else {   // External User.
-            this.retrievalDate = this.loanDate.plusDays(7);
-        }
+
     }
 
     // Constructor (loan to a staff member)
     public Loan(Library library, Book book, LibraryStaff staff) {
-        this.library = library;
-        this.user = null;
-        this.libStaffMember = staff;
         this.loanDate = LocalDate.now();
-        this.retrievalDate = this.loanDate.plusDays(20);
         this.amountOfRenewals = 0;
+        this.retrieved = false;
 
-        // Checking to see if the requested book is available for loan.
-        if (book.getAvailable()) {
-            this.item = book;
-            this.item.incrementTimesBorrowed();
+        // Checking to see if the loan is possible.
+        if (item.getAvailable() && !staff.getIsSuspended() && staff.getNumberOfActiveLoans() < 4) {
+            this.library = library;
+            this.item = item;
+            this.user = null;
+            this.libStaffMember = staff;
+
             this.item.setAvailable(false);
+            this.libStaffMember.incrementActiveLoans();
         }
         else {
+            this.library = null;
             this.item = null;
-            System.out.println("Sorry, that book is not currently available.");
+            this.user = null;
+            this.libStaffMember = null;
+            this.retrievalDate = null;
+
+            System.out.println("Sorry, the loan cannot be completed either because the" +
+                    " item is not available at the moment, you have been suspended, or" +
+                    " you have reached the maximum amount of simultaneous loans.");
         }
     }
 

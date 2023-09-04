@@ -73,6 +73,10 @@ abstract public class Person {
         return phoneNumber;
     }
 
+    public int getNumberOfActiveLoans() {
+        return numberOfActiveLoans;
+    }
+
     public boolean getIsSuspended() {
         return isSuspended;
     }
@@ -92,6 +96,10 @@ abstract public class Person {
 
     public void setIsSuspended(boolean new_status) {
         this.isSuspended = new_status;
+    }
+
+    private void setNumberOfActiveLoans(int num) {
+        this.numberOfActiveLoans = num;
     }
 
     // Methods --------------------------------------------------------------------------
@@ -128,5 +136,19 @@ abstract public class Person {
         else {
             return false;
         }
+    }
+
+    /**
+     * Method that increments the user's number of active loans.
+     */
+    public void incrementActiveLoans() {
+        this.numberOfActiveLoans++;
+    }
+
+    /**
+     * Method that decreases the user's number of active loans.
+     */
+    public void decreaseActiveLoans() {
+        this.numberOfActiveLoans--;
     }
 }
