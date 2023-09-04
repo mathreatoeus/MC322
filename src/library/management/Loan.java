@@ -183,12 +183,56 @@ public class Loan {
     // Methods --------------------------------------------------------------------------
 
     /**
-     * Method to try and renew the loan. The maximum amount of renewals allowed is 5.
+     * Method to try and renew the loan made to a user or staff member.
      *
      * @return true on success and false on failure.
      */
     public boolean renewLoan() {
-        return true;
+        if (this.user != null) {
+            if ((this.item).getReserves().isEmpty() && !(this.user).getIsSuspended()) {
+                this.amountOfRenewals++;
+
+                if (this.user instanceof Student) {
+                    if (((Student) this.user).getIsGradStudent()) {
+                        this.retrievalDate = this.retrievalDate.plusDays(20);
+                    }
+                    else {
+                        this.retrievalDate = this.retrievalDate.plusDays(15);
+                    }
+                }
+                else if (this.user instanceof FacultyUser) {
+                    this.retrievalDate = this.retrievalDate.plusDays(30);
+                }
+                else if (this.user instanceof UniversityStaff) {
+                    this.retrievalDate = this.retrievalDate.plusDays(20);
+                }
+                else {   // External User
+                    this.retrievalDate = this.retrievalDate.plusDays(7);
+                }
+
+                return true;
+            }
+            else {
+                System.out.println("Sorry, this loan cannot be renewed either because the item" +
+                        " is reserved or you have been suspended.");
+
+                return false;
+            }
+        }
+        else {
+            if ((this.item).getReserves().isEmpty() && !this.libStaffMember.getIsSuspended()) {
+                this.retrievalDate = this.retrievalDate.plusDays(20);
+                this.amountOfRenewals++;
+
+                return true;
+            }
+            else {
+                System.out.println("Sorry, this loan cannot be renewed either because the item" +
+                        " is reserved or you have been suspended.");
+
+                return false;
+            }
+        }
     }
 
     /**

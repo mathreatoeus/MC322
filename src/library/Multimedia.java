@@ -16,13 +16,13 @@ import library.management.ReserveComparator;
 abstract public class Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String title;
-    private String digitalContent; //Define content type
+    private String digitalContent;                                 //Define content type.
     private String author;
     private String publishingCompany;
     private String genre;
     private String summary;
     private String cover;
-    private String whereToFound; // Can be used to store URL links too
+    private String whereToFound;                   // Can be used to store URL links too.
     private int yearOfPublication;
     private int ncpys;
     private int id;
@@ -30,7 +30,7 @@ abstract public class Multimedia {
     private int timesBorrowed;
     private LocalDate addedDate;
     private Loan loan;
-    private PriorityQueue<Reserve> reserves;
+    private PriorityQueue<Reserve> reserves;      // Max-heap prioritized by pickup date.
 
     // Constructor ----------------------------------------------------------------------
     public Multimedia(String title, String digitalContent, String author, String publishingCompany,
