@@ -1,10 +1,5 @@
-import library.*;
-import people.User;
-import people.Student;
-import people.FacultyUser;
-import people.LibraryStaff;
-import people.ExternalUser;
-import people.UniversityStaff;
+import people.users.Student;
+
 import java.time.LocalDate;
 
 /**

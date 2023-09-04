@@ -3,9 +3,8 @@ package library;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import people.User;
-import people.LibraryStaff;
-import library.Multimedia;
+import people.users.User;
+import people.staff.LibraryStaff;
 
 /**
  * Class that represents a report, which stores info on the Library's operation.
