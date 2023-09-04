@@ -200,7 +200,7 @@ abstract public class Multimedia {
      *
      * @return the reserve with max pickup date.
      */
-    public Reserve getMaxPickupDate() {
+    public Reserve getLatestReserve() {
         return reserves.peek();
     }
 }
