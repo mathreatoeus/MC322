@@ -1,8 +1,11 @@
-package library;
+package library.management;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+
+import library.Library;
+import library.Multimedia;
 import people.users.User;
 import people.staff.LibraryStaff;
 
@@ -14,7 +17,7 @@ import people.staff.LibraryStaff;
 
 public class Report {
     // Private Attributes ---------------------------------------------------------------
-    private String type;                                  // Loan, Renewal or Suspension.
+    private ReportType type;
     private String reportTitle;
     private User user;                                                  // If applicable.
     private LibraryStaff libStaff;                                      // If applicable.
@@ -24,7 +27,7 @@ public class Report {
     private static int instanceCount = 0;
 
     // Constructor (User) ---------------------------------------------------------------
-    public Report(String type, User user, Multimedia item, Library library) {
+    public Report(ReportType type, User user, Multimedia item, Library library) {
         this.type = type;
         this.reportTitle = this.type + "Report" + instanceCount;
         this.user = user;
@@ -36,7 +39,7 @@ public class Report {
     }
 
     // Constructor (Staff Member) -------------------------------------------------------
-    public Report(String type, LibraryStaff libStaff, Multimedia item, Library library) {
+    public Report(ReportType type, LibraryStaff libStaff, Multimedia item, Library library) {
         this.type = type;
         this.user = null;
         this.libStaff = libStaff;
@@ -47,7 +50,7 @@ public class Report {
     }
 
     // Getters --------------------------------------------------------------------------
-    public String getReportType() {
+    public ReportType getReportType() {
         return type;
     }
 
@@ -72,7 +75,7 @@ public class Report {
     }
 
     // Setters --------------------------------------------------------------------------
-    private void setType(String newType) {
+    private void setType(ReportType newType) {
         this.type = newType;
     }
 
@@ -115,16 +118,30 @@ public class Report {
         // Creating the content.
         String content = "";
 
-        if (this.type.equals("Loan")) {
-            content = "User/Staff member has borrowed item '" + this.item.getTitle() + "'" +
-            "from library " + this.library;
-        }
-        else if (this.type.equals("Renewal")) {
-            content = "User/Staff member has renewed item '" + this.item.getTitle() + "' for 7 days" +
-            "from library " + this.library;
-        }
-        else {
-            content = "User/Staff member has been suspended for 2 days.";
+        switch (this.type) {
+            case USER_ACTIVITY:
+
+                break;
+
+            case ITEM_USAGE:
+
+                break;
+
+            case FINES_AND_PAYMENT:
+
+                break;
+
+            case ITEM_AVAILABILITY:
+
+                break;
+
+            case USER_STATISTICS:
+
+                break;
+
+            case POPULAR_ITEMS:
+
+                break;
         }
 
         // Creating the Report File

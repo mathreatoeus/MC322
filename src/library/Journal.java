@@ -23,7 +23,7 @@ public class Journal extends Multimedia {
         this.section = section; 
         this.knowledgeArea = knowledgeArea;
         this.conservation = conservation;
-        this.month = monthOfPublication;
+        this.monthOfPublication = monthOfPublication;
         this.ncpysAvailable = ncpysAvailable;
     }
 

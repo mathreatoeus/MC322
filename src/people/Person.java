@@ -73,7 +73,7 @@ abstract public class Person {
         return phoneNumber;
     }
 
-    protected boolean getIsSuspended() {
+    public boolean getIsSuspended() {
         return isSuspended;
     }
 

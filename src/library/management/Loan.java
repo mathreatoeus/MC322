@@ -1,7 +1,10 @@
-package library;
+package library.management;
 
 import java.time.LocalDate;
 
+import library.Book;
+import library.Library;
+import library.Multimedia;
 import people.staff.LibraryStaff;
 import people.users.FacultyUser;
 import people.users.Student;
@@ -128,27 +131,7 @@ public class Loan {
      * @return true on success and false on failure.
      */
     public boolean renewLoan() {
-        if (this.amountOfRenewals <= 5) {
-            this.setRetrievalDate(this.retrievalDate.plusDays(7));
-            this.amountOfRenewals++;
-            Report renewalReport;
-
-            if (this.user != null) {
-                renewalReport = new Report("Renewal", this.user, this.item,
-                        this.library);
-            }
-            else {
-                renewalReport = new Report("Renewal", this.libStaffMember, this.item,
-                        this.library);
-            }
-
-            renewalReport.generateReport();
-            return true;
-        }
-        else {
-            System.out.println("You can only renew this item 5 times via web.");
-            return false;
-        }
+        return true;
     }
 
     /**
@@ -158,24 +141,6 @@ public class Loan {
      * @return true if it is and false if it isn't.
      */
     public boolean isExpired() {
-        if (LocalDate.now().isAfter(this.retrievalDate)) {
-            Report suspensionReport;
-
-            if (this.user != null) {
-                this.user.setIsSuspended(true);
-                suspensionReport = new Report("Suspension", this.user, this.item,
-                        this.library);
-            }
-            else {
-                this.libStaffMember.setIsSuspended(true);
-                suspensionReport = new Report("Suspension", this.libStaffMember, this.item,
-                        this.library);
-            }
-            suspensionReport.generateReport();
-            return true;
-        }
-        else {
-            return false;
-        }
+        return true;
     }
 }
