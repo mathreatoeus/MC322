@@ -16,7 +16,7 @@ public class Magazine extends Multimedia {
     
     // Constructor ----------------------------------------------------------------------
     public Magazine(String title, String digitalContent, String author, String publishingCompany, String genre, String summary,
-                    String cover, String magazineName, String section, String conservation, String publisher, String whereToFound, int yearOfPublication, 
+                    String cover, String magazineName, String section, String conservation, String whereToFound, int yearOfPublication, 
                     int monthOfPublication, int ncpysAvailable, int ncpys, int id) {
         super(title, digitalContent, author, publishingCompany, genre, summary, cover, whereToFound, yearOfPublication, ncpys, id);
         this.maganizeName = magazineName;

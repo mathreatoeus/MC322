@@ -22,7 +22,6 @@ public class Journal extends Multimedia {
         super(title, digitalContent, author, publishingCompany, genre, summary, cover, whereToFound, yearOfPublication, ncpys, id);
         this.section = section; 
         this.knowledgeArea = knowledgeArea;
-        this.publisher = publisher;
         this.conservation = conservation;
         this.month = monthOfPublication;
         this.ncpysAvailable = ncpysAvailable;
