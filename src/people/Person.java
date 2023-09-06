@@ -1,6 +1,9 @@
 package people;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import library.management.Loan;
+import library.management.Reserve;
 
 /**
  * Class that represents a general person. Superclass of User.
@@ -22,6 +25,8 @@ abstract public class Person {
     private double totalFines;
     private boolean isSuspended;
     private LocalDate registrationDate;
+    private LinkedList<Loan> loans;
+    private LinkedList<Reserve> reserves;
 
     // Constructor ----------------------------------------------------------------------
 
@@ -40,6 +45,8 @@ abstract public class Person {
         this.isSuspended =  false;
         this.registrationDate = LocalDate.now();
         this.totalFines = 0;
+        this.loans = new LinkedList<>();
+        this.reserves = new LinkedList<>();
     }
 
     // Getters --------------------------------------------------------------------------
@@ -89,6 +96,14 @@ abstract public class Person {
 
     public LocalDate getRegistrationDate() {
         return registrationDate;
+    }
+
+    public LinkedList<Loan> getLoans() {
+        return loans;
+    }
+
+    public LinkedList<Reserve> getReserves() {
+        return reserves;
     }
 
     // Setters --------------------------------------------------------------------------
@@ -160,5 +175,23 @@ abstract public class Person {
      */
     public void decreaseActiveLoans() {
         this.numberOfActiveLoans--;
+    }
+
+    /**
+     * Method to add a new loan to the user's loan list.
+     *
+     * @param newLoan the loan to be added.
+     */
+    public void addLoan(Loan newLoan) {
+        (this.loans).add(newLoan);
+    }
+
+    /**
+     * Method to add a new reserve to the user's reserve list.
+     *
+     * @param newReserve the reserve to be added.
+     */
+    public void addReserve(Reserve newReserve) {
+        (this.reserves).add(newReserve);
     }
 }

@@ -106,6 +106,7 @@ public class Loan {
 
             this.item.setAvailable(false);
             this.user.incrementActiveLoans();
+            this.user.addLoan(this);
         }
         else {
             this.library = null;
@@ -131,6 +132,7 @@ public class Loan {
 
             this.item.setAvailable(false);
             this.libStaffMember.incrementActiveLoans();
+            this.libStaffMember.addLoan(this);
         }
         else {
             this.library = null;

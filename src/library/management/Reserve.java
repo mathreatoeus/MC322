@@ -64,6 +64,7 @@ public class Reserve {
                 }
 
                 this.item.addReserve(this);
+                this.user.addReserve(this);
             }
 
         } else {
@@ -81,6 +82,8 @@ public class Reserve {
 
     // Constructor (reserved by library staff)
     public Reserve(Library library, Multimedia item, LibraryStaff libStaff) {
+        // Must be updated to get pickup date and add the reserve to the staff member's
+        // reserve list
         if (!this.libStaff.getIsSuspended()) {
             this.library = library;
             this.item = item;
