@@ -78,7 +78,7 @@ abstract class Multimedia {
         return whereToFound;
     }
 
-    public String getYearOfPublication() {
+    public int getYearOfPublication() {
         return yearOfPublication;
     }
 
