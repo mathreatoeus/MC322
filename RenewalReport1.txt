@@ -1,7 +1,0 @@
----------- RenewalReport1 ----------
-User: Matheus Reato
-Member ID: 273be4933a36aba01788d7e5fa548130f830d89c2534c7a42063945445beb7c4
-Username: m244088@dac.unicamp.br
-Emission Date: 2023-08-27
----------- Info ----------
-User/Staff member has renewed item 'Principles and Practice of Physics' for 7 daysfrom library library.Library@deb6432

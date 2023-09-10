@@ -1,7 +1,0 @@
----------- RenewalReport3 ----------
-User: Caio Taishi
-Member ID: 75c3b8af3220c857ef4c55001a9965c38f2c9e0f59486395062eb242d2beca1b
-Username: c242908@dac.unicamp.br
-Emission Date: 2023-08-27
----------- Info ----------
-User/Staff member has renewed item 'IEEE Microwave' for 7 daysfrom library library.Library@deb6432
