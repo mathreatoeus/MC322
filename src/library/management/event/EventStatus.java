@@ -1,4 +1,4 @@
-package library.management;
+package library.management.event;
 
 /**
  * Enum that states the possible status of an event.

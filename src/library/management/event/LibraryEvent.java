@@ -1,4 +1,4 @@
-package library.management;
+package library.management.event;
 
 import library.Library;
 import people.Person;
