@@ -1,6 +1,10 @@
 package library;
 
 import java.time.LocalDate;
+import java.util.PriorityQueue;
+import library.management.Reserve;
+import library.management.Loan;
+import library.management.ReserveComparator;
 
 /**
  * Class that represents a general multimedia. Superclass of Article, Book, Journal, 
@@ -9,26 +13,29 @@ import java.time.LocalDate;
  * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
  */
 
-abstract class Multimedia {
+abstract public class Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String title;
-    private String digitalContent; //Define content type
+    private String digitalContent;                                 //Define content type.
     private String author;
     private String publishingCompany;
     private String genre;
     private String summary;
     private String cover;
-    private String whereToFound; // Can be used to store URL links too
+    private String whereToFound;                   // Can be used to store URL links too.
     private int yearOfPublication;
     private int ncpys;
     private int id;
     private boolean available;
     private int timesBorrowed;
     private LocalDate addedDate;
+    private Loan loan;
+    private PriorityQueue<Reserve> reserves;      // Max-heap prioritized by pickup date.
 
     // Constructor ----------------------------------------------------------------------
-    public Multimedia(String title, String digitalContent, String author, String publishingCompany, String genre, String summary, 
-                      String cover, String whereToFound, int yearOfPublication, int ncpys, int id) {
+    public Multimedia(String title, String digitalContent, String author, String publishingCompany,
+                      String genre, String summary, String cover, String whereToFound,
+                      int yearOfPublication, int ncpys, int id) {
         this.title = title;
         this.digitalContent = digitalContent;
         this.author = author;
@@ -43,6 +50,8 @@ abstract class Multimedia {
         this.available = true;
         this.timesBorrowed = 0;
         this.addedDate = LocalDate.now();
+        this.loan = null;
+        this.reserves = new PriorityQueue<Reserve>(new ReserveComparator());
     }
 
     // Getters --------------------------------------------------------------------------
@@ -78,7 +87,7 @@ abstract class Multimedia {
         return whereToFound;
     }
 
-    public String getYearOfPublication() {
+    public int getYearOfPublication() {
         return yearOfPublication;
     }
 
@@ -100,6 +109,14 @@ abstract class Multimedia {
 
     public LocalDate getAddedDate() {
         return addedDate;
+    }
+
+    public Loan getLoan() {
+        return loan;
+    }
+
+    public PriorityQueue<Reserve> getReserves() {
+        return reserves;
     }
 
     // Setters --------------------------------------------------------------------------
@@ -147,6 +164,10 @@ abstract class Multimedia {
         this.available = newStatus;
     }
 
+    public void setLoan(Loan newLoan) {
+        this.loan = newLoan;
+    }
+
     // Methods --------------------------------------------------------------------------
     /**
      * Method to try and increment the amount of times a multimedia has been borrowed by a user
@@ -162,5 +183,24 @@ abstract class Multimedia {
         else {
             return false;
         }
+    }
+
+    /**
+     * Method that inserts a new reserve into the reserves max-heap.
+     *
+     * @param newReserve the new reserve to be added to reserves.
+     */
+    public void addReserve(Reserve newReserve) {
+        reserves.add(newReserve);
+    }
+
+    /**
+     * Method that retrieves the Reserve object inside the reserves heap with the maximum
+     * pickup date.
+     *
+     * @return the reserve with max pickup date.
+     */
+    public Reserve getLatestReserve() {
+        return reserves.peek();
     }
 }

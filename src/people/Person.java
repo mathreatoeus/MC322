@@ -1,6 +1,9 @@
 package people;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import library.management.Loan;
+import library.management.Reserve;
 
 /**
  * Class that represents a general person. Superclass of User.
@@ -19,8 +22,11 @@ abstract public class Person {
     private String email;
     private String phoneNumber;
     private int numberOfActiveLoans;
+    private double totalFines;
     private boolean isSuspended;
     private LocalDate registrationDate;
+    private LinkedList<Loan> loans;
+    private LinkedList<Reserve> reserves;
 
     // Constructor ----------------------------------------------------------------------
 
@@ -38,6 +44,9 @@ abstract public class Person {
         this.numberOfActiveLoans = 0;
         this.isSuspended =  false;
         this.registrationDate = LocalDate.now();
+        this.totalFines = 0;
+        this.loans = new LinkedList<>();
+        this.reserves = new LinkedList<>();
     }
 
     // Getters --------------------------------------------------------------------------
@@ -57,7 +66,7 @@ abstract public class Person {
         return username;
     }
 
-    protected String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -73,12 +82,28 @@ abstract public class Person {
         return phoneNumber;
     }
 
-    protected boolean getIsSuspended() {
+    public int getNumberOfActiveLoans() {
+        return numberOfActiveLoans;
+    }
+
+    public double getTotalFines() {
+        return totalFines;
+    }
+
+    public boolean getIsSuspended() {
         return isSuspended;
     }
 
     public LocalDate getRegistrationDate() {
         return registrationDate;
+    }
+
+    public LinkedList<Loan> getLoans() {
+        return loans;
+    }
+
+    public LinkedList<Reserve> getReserves() {
+        return reserves;
     }
 
     // Setters --------------------------------------------------------------------------
@@ -92,6 +117,14 @@ abstract public class Person {
 
     public void setIsSuspended(boolean new_status) {
         this.isSuspended = new_status;
+    }
+
+    private void setNumberOfActiveLoans(int num) {
+        this.numberOfActiveLoans = num;
+    }
+
+    public void setTotalFines(double newTotalFines) {
+        this.totalFines = newTotalFines;
     }
 
     // Methods --------------------------------------------------------------------------
@@ -128,5 +161,37 @@ abstract public class Person {
         else {
             return false;
         }
+    }
+
+    /**
+     * Method that increments the user's number of active loans.
+     */
+    public void incrementActiveLoans() {
+        this.numberOfActiveLoans++;
+    }
+
+    /**
+     * Method that decreases the user's number of active loans.
+     */
+    public void decreaseActiveLoans() {
+        this.numberOfActiveLoans--;
+    }
+
+    /**
+     * Method to add a new loan to the user's loan list.
+     *
+     * @param newLoan the loan to be added.
+     */
+    public void addLoan(Loan newLoan) {
+        (this.loans).add(newLoan);
+    }
+
+    /**
+     * Method to add a new reserve to the user's reserve list.
+     *
+     * @param newReserve the reserve to be added.
+     */
+    public void addReserve(Reserve newReserve) {
+        (this.reserves).add(newReserve);
     }
 }

@@ -1,8 +1,13 @@
-package library;
+package library.management;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.Iterator;
+
+import library.Library;
+import library.Multimedia;
 import people.users.User;
 import people.staff.LibraryStaff;
 
@@ -14,7 +19,7 @@ import people.staff.LibraryStaff;
 
 public class Report {
     // Private Attributes ---------------------------------------------------------------
-    private String type;                                  // Loan, Renewal or Suspension.
+    private ReportType type;
     private String reportTitle;
     private User user;                                                  // If applicable.
     private LibraryStaff libStaff;                                      // If applicable.
@@ -24,7 +29,7 @@ public class Report {
     private static int instanceCount = 0;
 
     // Constructor (User) ---------------------------------------------------------------
-    public Report(String type, User user, Multimedia item, Library library) {
+    public Report(ReportType type, User user, Multimedia item, Library library) {
         this.type = type;
         this.reportTitle = this.type + "Report" + instanceCount;
         this.user = user;
@@ -36,18 +41,19 @@ public class Report {
     }
 
     // Constructor (Staff Member) -------------------------------------------------------
-    public Report(String type, LibraryStaff libStaff, Multimedia item, Library library) {
+    public Report(ReportType type, LibraryStaff libStaff, Multimedia item, Library library) {
         this.type = type;
+        this.reportTitle = this.type + "Report" + instanceCount;
         this.user = null;
         this.libStaff = libStaff;
-        this.emissionDate = LocalDate.now();
         this.item = item;
         this.library = library;
+        this.emissionDate = LocalDate.now();
         instanceCount++;
     }
 
     // Getters --------------------------------------------------------------------------
-    public String getReportType() {
+    public ReportType getReportType() {
         return type;
     }
 
@@ -72,7 +78,7 @@ public class Report {
     }
 
     // Setters --------------------------------------------------------------------------
-    private void setType(String newType) {
+    private void setType(ReportType newType) {
         this.type = newType;
     }
 
@@ -87,50 +93,67 @@ public class Report {
     // Methods --------------------------------------------------------------------------
 
     /**
-     * Method that generates a .txt report file based on the situation. The file will be
-     * stored in the root directory.
+     * Method that tries to generate a .txt report file based on the situation. The file
+     * will be stored in the root directory.
      *
      * @return true on success and false on failure.
      */
-    public boolean generateReport() {
-        // Creating the Page's Title
-        String pageTitle = "---------- " + this.reportTitle + " ----------\n";
+    public boolean generateReport(Library library) {
+        // The report's 3 building blocks.
+        String title;
+        String headers;
+        String content;
 
-        // Creating the headers.
-        String headers = "";
+        // Checking for the report type.
+        switch (this.type) {
+            case USER_ACTIVITY:
+                // Getting the library's lists of members.
+                LinkedList<User> users = library.getUsers();
+                LinkedList<LibraryStaff> staffMembers = library.getStaff();
 
-        if (this.libStaff == null) {
-            headers = "User: " + this.user.getName() + " " + this.user.getSurname() +
-                    "\nMember ID: " + this.user.getMemberId() + "\nUsername: " +
-                    this.user.getUsername() + "\nEmission Date: " + this.emissionDate + "\n";
-        }
-        else {
-            headers = "User: " + this.libStaff.getName() + this.libStaff.getSurname() +
-                    "\nStaff ID: " + this.libStaff.getStaffId() + "\nUsername: " +
-                    this.libStaff.getUsername() + "\nEmission Date: " + this.emissionDate + "\n";
-        }
+                // Iterating over the members and their loans/reserves.
+                Iterator<User> userIterator = users.iterator();
+                Iterator<LibraryStaff> staffIterator = staffMembers.iterator();
 
-        headers += "---------- Info ----------\n";
+                content = "--------------- INFO ---------------\n" + "USER LOANS:\n";
 
-        // Creating the content.
-        String content = "";
+                while(userIterator.hasNext()) {
+                    User currentUser = userIterator.next();
+                    LinkedList<Loan> currentUserLoans = currentUser.getLoans();
+                    Iterator<Loan> loanIterator = currentUserLoans.iterator();
 
-        if (this.type.equals("Loan")) {
-            content = "User/Staff member has borrowed item '" + this.item.getTitle() + "'" +
-            "from library " + this.library;
-        }
-        else if (this.type.equals("Renewal")) {
-            content = "User/Staff member has renewed item '" + this.item.getTitle() + "' for 7 days" +
-            "from library " + this.library;
-        }
-        else {
-            content = "User/Staff member has been suspended for 2 days.";
+                    content += "--------------------\n" + "USER: " + currentUser.getName() +
+                            " " + currentUser.getSurname() + "\n" + "MEMBER ID: " + currentUser.getMemberId() +
+                            "\n";
+                }
+
+                break;
+
+            case ITEM_USAGE:
+
+                break;
+
+            case FINES_AND_PAYMENT:
+
+                break;
+
+            case ITEM_AVAILABILITY:
+
+                break;
+
+            case USER_STATISTICS:
+
+                break;
+
+            case POPULAR_ITEMS:
+
+                break;
         }
 
         // Creating the Report File
         try {
             FileWriter writer = new FileWriter(this.reportTitle + ".txt");
-            writer.write(pageTitle + headers + content);
+            writer.write(""); // Strings will go here,
             writer.close();
             System.out.println("Report file generated successfully.");
             return true;

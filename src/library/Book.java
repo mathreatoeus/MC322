@@ -12,7 +12,7 @@ public class Book extends Multimedia {
     // Private Attributes ---------------------------------------------------------------
     private String authorSurname; // Author's name has been separated to ease user input.
     private String section;
-    private Strint conservation;
+    private String conservation;
     private int edition;
     private int isbn;
 
@@ -22,10 +22,14 @@ public class Book extends Multimedia {
     private int nLicenses;
 
     // Constructor ----------------------------------------------------------------------
-    public Book(String title, String digitalContent, String author, String publishingCompany, String genre, String summary, String cover,
-                String authorName, String authorSurname, String section, String whereToFound, String conservation, String compatibleApps,
-                int edition, int yearOfPublication, int ncpys, int id, int isbn, int ncpysAvailable, int nLicenses) {
-        super(title, digitalContent, author, publishingCompany, genre, summary, cover, whereToFound, ncpys, id);
+    public Book(String title, String digitalContent, String author, String publishingCompany,
+                String genre, String summary, String cover, String authorName, String authorSurname,
+                String section, String whereToFound, String conservation, String compatibleApps,
+                int edition, int yearOfPublication, int ncpys, int id, int isbn, int ncpysAvailable,
+                int nLicenses) {
+        super(title, digitalContent, author, publishingCompany, genre, summary, cover, whereToFound,
+                yearOfPublication, ncpys, id);
+
         this.authorSurname = authorSurname;
         this.section = section;        
         this.conservation = conservation;
