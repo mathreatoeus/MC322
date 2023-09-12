@@ -1,4 +1,4 @@
-package library;
+package library.room;
 
 /**
  * Enum that states the possible room types.
