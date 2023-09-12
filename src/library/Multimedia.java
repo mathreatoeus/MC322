@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.PriorityQueue;
 import library.management.Reserve;
 import library.management.Loan;
-import library.management.ReserveComparator;
 
 /**
  * Class that represents a general multimedia. Superclass of Article, Book, Journal, 
@@ -51,7 +50,6 @@ abstract public class Multimedia {
         this.timesBorrowed = 0;
         this.addedDate = LocalDate.now();
         this.loan = null;
-        this.reserves = new PriorityQueue<Reserve>(new ReserveComparator());
     }
 
     // Getters --------------------------------------------------------------------------

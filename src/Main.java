@@ -9,13 +9,8 @@ import java.time.LocalDate;
  * @version 1.4
  */
 
-class Main {
+public class Main {
     public static void main(String[] args) {
-        Student matheus = new Student("Matheus", "Reato", "54-981-976-9", "mathreatoeus",
-                "mypassword", "Rua Antonio Paioli, n 20", "m244088@dac.unicamp.br",
-                "19 99892 8237", 244088, false);
-
-        LocalDate mrd = matheus.getRegistrationDate();
-        System.out.println(mrd);
+        System.out.println("Hello, World");
     }
 }
