@@ -16,6 +16,7 @@ public abstract class RoomReservation {
     public static class IndividualRoomReserve {
         // Private Attributes ***************************************
         private final Room room;
+        private RoomReservationStatus status;
         private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
@@ -25,6 +26,7 @@ public abstract class RoomReservation {
         public IndividualRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
             this.room = room;
+            status = RoomReservationStatus.PENDING;
             this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
@@ -37,6 +39,10 @@ public abstract class RoomReservation {
         // Getters **************************************************
         public Room getRoom () {
             return room;
+        }
+
+        public RoomReservationStatus getStatus() {
+            return status;
         }
 
         private Person getAmbassador() {
@@ -56,6 +62,10 @@ public abstract class RoomReservation {
         }
 
         // Setters **************************************************
+        private void setStatus(RoomReservationStatus newStatus) {
+            this.status = newStatus;
+        }
+
         private void setStartDateTime(LocalDateTime newStartDateTime) {
             this.startDateTime = newStartDateTime;
         }
@@ -73,6 +83,7 @@ public abstract class RoomReservation {
     // **********************************************************************************
     public static class GroupRoomReserve {
         private final Room room;
+        private RoomReservationStatus status;
         private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
@@ -82,6 +93,7 @@ public abstract class RoomReservation {
         public GroupRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
             this.room = room;
+            status = RoomReservationStatus.PENDING;
             this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
@@ -94,6 +106,10 @@ public abstract class RoomReservation {
         // Getters **************************************************
         public Room getRoom () {
             return room;
+        }
+
+        public RoomReservationStatus getStatus() {
+            return status;
         }
 
         private Person getAmbassador() {
@@ -113,6 +129,10 @@ public abstract class RoomReservation {
         }
 
         // Setters **************************************************
+        private void setStatus(RoomReservationStatus newStatus) {
+            this.status = newStatus;
+        }
+
         private void setStartDateTime(LocalDateTime newStartDateTime) {
             this.startDateTime = newStartDateTime;
         }
@@ -130,6 +150,7 @@ public abstract class RoomReservation {
     // **********************************************************************************
     public static class SilentRoomReserve {
         private final Room room;
+        private RoomReservationStatus status;
         private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
@@ -139,6 +160,7 @@ public abstract class RoomReservation {
         public SilentRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
             this.room = room;
+            status = RoomReservationStatus.PENDING;
             this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
@@ -151,6 +173,10 @@ public abstract class RoomReservation {
         // Getters **************************************************
         public Room getRoom () {
             return room;
+        }
+
+        public RoomReservationStatus getStatus() {
+            return status;
         }
 
         private Person getAmbassador() {
@@ -170,6 +196,10 @@ public abstract class RoomReservation {
         }
 
         // Setters **************************************************
+        private void setStatus(RoomReservationStatus newStatus) {
+            this.status = newStatus;
+        }
+
         private void setStartDateTime(LocalDateTime newStartDateTime) {
             this.startDateTime = newStartDateTime;
         }
@@ -187,6 +217,7 @@ public abstract class RoomReservation {
     // **********************************************************************************
     public static class MultimediaRoomReserve {
         private final Room room;
+        private RoomReservationStatus status;
         private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
@@ -196,6 +227,7 @@ public abstract class RoomReservation {
         public MultimediaRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
             this.room = room;
+            status = RoomReservationStatus.PENDING;
             this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
@@ -208,6 +240,10 @@ public abstract class RoomReservation {
         // Getters **************************************************
         public Room getRoom () {
             return room;
+        }
+
+        public RoomReservationStatus getStatus() {
+            return status;
         }
 
         private Person getAmbassador() {
@@ -227,6 +263,10 @@ public abstract class RoomReservation {
         }
 
         // Setters **************************************************
+        private void setStatus(RoomReservationStatus newStatus) {
+            this.status = newStatus;
+        }
+        
         private void setStartDateTime(LocalDateTime newStartDateTime) {
             this.startDateTime = newStartDateTime;
         }
