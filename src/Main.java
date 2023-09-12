@@ -1,7 +1,3 @@
-import people.users.Student;
-
-import java.time.LocalDate;
-
 /**
  * ShelfSense Library Management System.
  *
@@ -9,8 +5,11 @@ import java.time.LocalDate;
  * @version 1.4
  */
 
+import library.management.RoomReservation;
+import library.room.*;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World");
+
     }
 }
