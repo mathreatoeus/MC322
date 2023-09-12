@@ -15,7 +15,7 @@ import java.util.LinkedList;
 public class Library {
     // Private Attributes ---------------------------------------------------------------
     private String institute;
-    private LinkedList<Book> books;  // Might be substituted by a min-heap in the future.
+    private LinkedList<Book> books;                   // Might be replaced by a min-heap.
     private LinkedList<AudibleContent> audibles;
     private LinkedList<Magazine> magazines;
     private LinkedList<DailyNews> dailyNews;
