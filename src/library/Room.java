@@ -1,4 +1,4 @@
-package library.room;
+package library;
 
 /**
  * Class that represents a Room in a Library.
@@ -7,7 +7,7 @@ package library.room;
  */
 
 import java.util.ArrayList;
-import library.equipment.Equipment;
+import library.Equipment;
 import library.management.RoomReservation;
 import java.time.LocalDateTime;
 
@@ -39,6 +39,11 @@ public class Room {
         this.hasComputer = hasComputer;
         this.hasProjector = hasProjector;
         this.hasIndividualCabin = hasIndividualCabin;
+    }
+
+    // Enums ----------------------------------------------------------------------------
+    private enum RoomType {
+        INDIVIDUAL, GROUP, SILENT, MULTIMEDIA
     }
 
     // Getters --------------------------------------------------------------------------

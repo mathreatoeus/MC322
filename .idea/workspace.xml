@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86e58f9d-81cc-445c-a4c9-cf75aa14a3ac" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/library/equipment/AudiovisualType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/equipment/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/Equipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/equipment/InformaticsType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/equipment/PrintingType.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/management/RoomReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/management/RoomReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/room/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/room/RoomType.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,4 +1,4 @@
-package library.equipment;
+package library;
 
 /**
  * Class that represents an equipment piece belonging to a library.
@@ -7,6 +7,19 @@ package library.equipment;
  */
 
 public abstract class Equipment {
+    // Enums ----------------------------------------------------------------------------
+    private enum InformaticsType {
+        DESKTOP, LAPTOP, TABLET
+    }
+
+    private enum AudiovisualType {
+        PROJECTOR, SCREEN, SPEAKER, HEADPHONE, CAMERA, MICROPHONE
+    }
+
+    private enum PrintingType {
+        PRINTER, SCANNER, FAX
+    }
+
     // **********************************************************************************
     public static class Informatics {
         // Private Attributes ***************************************

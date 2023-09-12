@@ -8,7 +8,8 @@ package library.management;
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
-import library.room.*;
+
+import library.Room;
 import people.Person;
 
 public abstract class RoomReservation {
@@ -266,7 +267,7 @@ public abstract class RoomReservation {
         private void setStatus(RoomReservationStatus newStatus) {
             this.status = newStatus;
         }
-        
+
         private void setStartDateTime(LocalDateTime newStartDateTime) {
             this.startDateTime = newStartDateTime;
         }
