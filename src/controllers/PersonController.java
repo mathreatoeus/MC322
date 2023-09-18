@@ -5,17 +5,15 @@ import models.people.*;
 
 public class PersonController {
     // Private Attributes ---------------------------------------------------------------
-
-    private ArrayList<Person> users;
+    private final ArrayList<Person> users;
 
     // Constructor ----------------------------------------------------------------------
-
     public PersonController() {
         this.users = new ArrayList<>();
     }
 
     // Methods --------------------------------------------------------------------------
-
+    
     /**
      * Method that returns the list of current active users.
      *
