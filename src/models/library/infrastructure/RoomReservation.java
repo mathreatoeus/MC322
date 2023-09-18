@@ -1,16 +1,9 @@
-package library.management;
-
-/**
- * Class that represents the reservation of a Library room by a user or member of staff.
- *
- * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
- */
+package models.library.infrastructure;
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
-import library.Room;
-import people.Person;
+import models.people.Person;
 
 public abstract class RoomReservation {
     // **********************************************************************************

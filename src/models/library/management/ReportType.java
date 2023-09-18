@@ -1,4 +1,4 @@
-package library.management;
+package models.library.management;
 
 /**
  * Enum that states the possible report types.

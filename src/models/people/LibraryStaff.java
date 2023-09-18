@@ -1,12 +1,6 @@
-package people.staff;
+package models.people;
 
-import people.Person;
-import people.staff.StaffLevel;
-import library.management.Loan;
-import people.users.ExternalUser;
-import people.users.FacultyUser;
-import people.users.Student;
-import people.users.UniversityStaff;
+import models.library.management.Loan;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -83,24 +77,6 @@ public class LibraryStaff extends Person {
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             return "none";
-        }
-    }
-
-    /**
-     * Method to try and change the current staff member's sector upon authentication.
-     *
-     * @param newSector The sector to which the staff member will be transferred.
-     * @param username The current staff member's username.
-     * @param password The current staff member's password.
-     * @return true on success and false on failure.
-     */
-    private boolean changeSector(String newSector, String username, String password) {
-        if (this.getUsername().equals(username) && this.getPassword().equals(password)) {
-            setSector(newSector);
-            return true;
-        }
-        else {
-            return false;
         }
     }
 

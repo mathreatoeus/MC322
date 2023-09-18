@@ -1,4 +1,4 @@
-package people.staff;
+package models.people;
 
 /**
  * Enum that states the possible levels a LibraryStaff object can have.

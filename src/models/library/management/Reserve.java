@@ -1,11 +1,9 @@
-package library.management;
+package models.library.management;
 
 import java.time.LocalDate;
 
-import library.Library;
-import library.Multimedia;
-import people.users.*;
-import people.staff.*;
+import models.library.content.Item;
+import models.people.*;
 
 /**
  * Class that represents a reserve of an item.
@@ -16,14 +14,14 @@ import people.staff.*;
 public class Reserve {
     // Private Attributes ---------------------------------------------------------------
     private Library library;
-    private Multimedia item;
+    private Item item;
     private User user;
     private LibraryStaff libStaff;
     private LocalDate reserveDate;
     private LocalDate pickupDate;
 
     // Constructor (reserved by user) ---------------------------------------------------
-    public Reserve(Library library, Multimedia item, User user) {
+    public Reserve(Library library, Item item, User user) {
         if (!this.user.getIsSuspended()) {
             this.library = library;
             this.item = item;
@@ -34,10 +32,10 @@ public class Reserve {
             if (((this.item).getReserves()).isEmpty()) {
                 // If there are no reserves, the pickup date is this item's retrieval date
                 // from the current loan.
-                this.pickupDate = (((this.item).getLoan()).getRetrievalDate());
+                this.pickupDate = (((this.item).getCurrentLoan()).getRetrievalDate());
             }
             else {
-                Reserve latestReserve = (this.item).getLatestReserve();
+                Reserve latestReserve = (this.item).pickLatestReserve();
 
                 // Determining the amount of time the user will keep the item.
                 if (latestReserve.getUser() == null) {
@@ -81,7 +79,7 @@ public class Reserve {
     }
 
     // Constructor (reserved by library staff)
-    public Reserve(Library library, Multimedia item, LibraryStaff libStaff) {
+    public Reserve(Library library, Item item, LibraryStaff libStaff) {
         // Must be updated to get pickup date and add the reserve to the staff member's
         // reserve list
         if (!this.libStaff.getIsSuspended()) {
@@ -105,7 +103,7 @@ public class Reserve {
         return library;
     }
 
-    public Multimedia getItem() {
+    public Item getItem() {
         return item;
     }
 
