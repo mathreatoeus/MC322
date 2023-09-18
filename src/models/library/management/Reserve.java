@@ -122,4 +122,13 @@ public class Reserve {
     public LocalDate getPickupDate() {
         return pickupDate;
     }
+
+    // Methods --------------------------------------------------------------------------
+
+    @Override
+    public String toString() {
+        return "Item ID: " + (this.item).getId() + "\n" +
+                "User: " + (this.user).getName() + " " + (this.user).getSurname() + "\n" +
+                "Pickup date: " + (this.getPickupDate()).toString() + "\n";
+    }
 }
