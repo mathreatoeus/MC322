@@ -1,10 +1,4 @@
-package library;
-
-/**
- * Class that represents an equipment piece belonging to a library.
- *
- * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
- */
+package models.library.infrastructure;
 
 public abstract class Equipment {
     // Enums ----------------------------------------------------------------------------

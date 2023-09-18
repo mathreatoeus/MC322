@@ -1,4 +1,4 @@
-package people.users;
+package models.people;
 
 /**
  * Class that represents a registered library user.
@@ -8,21 +8,21 @@ package people.users;
 
 public class Student extends User {
     // Private Attributes ---------------------------------------------------------------
-    private int ra;
-    private boolean isGradStudent;
+    private final int studentId;
+    private final boolean isGradStudent;
 
     // Constructor ----------------------------------------------------------------------
     public Student(String name, String surname, String socialId, String username,
                    String password, String address, String email, String phoneNumber,
-                   int ra, boolean isGradStudent) {
+                   int studentId, boolean isGradStudent) {
         super(name, surname, socialId, username, password, address, email, phoneNumber);
-        this.ra = ra;
+        this.studentId = studentId;
         this.isGradStudent = isGradStudent;
     }
 
-    // Getters
-    public int getRa() {
-        return ra;
+    // Getters --------------------------------------------------------------------------
+    public int getStudentId() {
+        return studentId;
     }
 
     public boolean getIsGradStudent() {

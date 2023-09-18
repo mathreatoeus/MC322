@@ -1,4 +1,4 @@
-package people.users;
+package models.people;
 
 /**
  * Class that represents a user who's a faculty member.
@@ -19,7 +19,7 @@ public class FacultyUser extends User {
     }
 
     // Getters --------------------------------------------------------------------------
-    private int getFacultyId() {
+    public int getFacultyId() {
         return facultyId;
     }
 }

@@ -1,4 +1,4 @@
-package library.management;
+package models.library.management;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Iterator;
 
-import library.Library;
-import library.Multimedia;
-import people.users.User;
-import people.staff.LibraryStaff;
+import models.library.content.Item;
+import models.people.Person;
+import models.people.User;
+import models.people.LibraryStaff;
 
 /**
  * Class that represents a report, which stores info on the Library's operation.
@@ -20,32 +20,18 @@ import people.staff.LibraryStaff;
 public class Report {
     // Private Attributes ---------------------------------------------------------------
     private ReportType type;
-    private String reportTitle;
-    private User user;                                                  // If applicable.
-    private LibraryStaff libStaff;                                      // If applicable.
-    private LocalDate emissionDate;
-    private Multimedia item;
-    private Library library;
+    private final String reportTitle;
+    private final Person user;
+    private final LocalDate emissionDate;
+    private final Item item;
+    private final Library library;
     private static int instanceCount = 0;
 
     // Constructor (User) ---------------------------------------------------------------
-    public Report(ReportType type, User user, Multimedia item, Library library) {
+    public Report(ReportType type, Person user, Item item, Library library) {
         this.type = type;
         this.reportTitle = this.type + "Report" + instanceCount;
         this.user = user;
-        this.libStaff = null;
-        this.item = item;
-        this.library = library;
-        this.emissionDate = LocalDate.now();
-        instanceCount++;
-    }
-
-    // Constructor (Staff Member) -------------------------------------------------------
-    public Report(ReportType type, LibraryStaff libStaff, Multimedia item, Library library) {
-        this.type = type;
-        this.reportTitle = this.type + "Report" + instanceCount;
-        this.user = null;
-        this.libStaff = libStaff;
         this.item = item;
         this.library = library;
         this.emissionDate = LocalDate.now();
@@ -57,15 +43,11 @@ public class Report {
         return type;
     }
 
-    public User getUser() {
+    public Person getUser() {
         return user;
     }
 
-    public LibraryStaff getLibStaff() {
-        return libStaff;
-    }
-
-    public Multimedia getItem() {
+    public Item getItem() {
         return item;
     }
 
@@ -80,14 +62,6 @@ public class Report {
     // Setters --------------------------------------------------------------------------
     private void setType(ReportType newType) {
         this.type = newType;
-    }
-
-    private void setUser(User newUser) {
-        this.user = newUser;
-    }
-
-    private void setLibStaff(LibraryStaff newLibStaff) {
-        this.libStaff = newLibStaff;
     }
 
     // Methods --------------------------------------------------------------------------

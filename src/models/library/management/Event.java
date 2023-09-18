@@ -1,10 +1,4 @@
-package library;
-
-/**
- * Class that represents an event happening in a library;
- *
- * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
- */
+package models.library.management;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

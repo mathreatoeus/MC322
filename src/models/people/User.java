@@ -1,6 +1,4 @@
-package people.users;
-
-import people.Person;
+package models.people;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

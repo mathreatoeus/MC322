@@ -1,14 +1,7 @@
-package library;
-
-/**
- * Class that represents a Room in a Library.
- *
- * @author Matheus Reato (RA: 244088), Caio Taishi (RA: 242908).
- */
+package models.library.infrastructure;
 
 import java.util.ArrayList;
-import library.Equipment;
-import library.management.RoomReservation;
+
 import java.time.LocalDateTime;
 
 public class Room {

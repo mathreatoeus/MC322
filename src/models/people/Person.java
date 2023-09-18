@@ -1,9 +1,9 @@
-package people;
+package models.people;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
-import library.management.Loan;
-import library.management.Reserve;
+import models.library.management.Loan;
+import models.library.management.Reserve;
 
 /**
  * Class that represents a general person. Superclass of User.
@@ -13,6 +13,7 @@ import library.management.Reserve;
 
 abstract public class Person {
     // Protected Attributes -------------------------------------------------------------
+
     private String name;
     private String surname;
     private String socialId;
@@ -50,6 +51,7 @@ abstract public class Person {
     }
 
     // Getters --------------------------------------------------------------------------
+
     public String getName() {
         return name;
     }
@@ -58,7 +60,7 @@ abstract public class Person {
         return surname;
     }
 
-    private String getSocialId() {
+    public String getSocialId() {
         return socialId;
     }
 
@@ -66,7 +68,7 @@ abstract public class Person {
         return username;
     }
 
-    public String getPassword() {
+    private String getPassword() {
         return password;
     }
 
@@ -86,7 +88,7 @@ abstract public class Person {
         return numberOfActiveLoans;
     }
 
-    public double getTotalFines() {
+    private double getTotalFines() {
         return totalFines;
     }
 
@@ -107,6 +109,7 @@ abstract public class Person {
     }
 
     // Setters --------------------------------------------------------------------------
+
     private void setUsername(String newUsername) {
         this.username = newUsername;
     }

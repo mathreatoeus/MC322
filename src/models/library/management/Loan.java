@@ -1,14 +1,8 @@
-package library.management;
+package models.library.management;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
-import library.Book;
-import library.Library;
-import library.Multimedia;
-import people.staff.LibraryStaff;
-import people.staff.StaffLevel;
-import people.users.*;
+import models.library.content.Item;
+import models.people.*;
 
 /**
  * Class that represents a loan of a Book from a Library to a User. The retrieval date will
@@ -20,16 +14,17 @@ import people.users.*;
 public class Loan {
     // Private Attributes ---------------------------------------------------------------
     private Library library;
-    private Multimedia item;
+    private Item item;
     private User user;                                                  // If applicable.
     private LibraryStaff libStaffMember;                                // If applicable.
-    private LocalDate loanDate;
+    private final LocalDate loanDate;
     private LocalDate retrievalDate;
     private byte amountOfRenewals;
     private boolean retrieved;
+    private boolean isActive;
 
     // Constructor (loan to user) -------------------------------------------------------
-    public Loan(Library library, Multimedia item, User user) {
+    public Loan(Library library, Item item, User user) {
         this.loanDate = LocalDate.now();
         this.amountOfRenewals = 0;
         this.retrieved = false;
@@ -103,6 +98,7 @@ public class Loan {
             this.item = item;
             this.user = user;
             this.libStaffMember = null;
+            this.isActive = true;
 
             this.item.setAvailable(false);
             this.user.incrementActiveLoans();
@@ -114,12 +110,13 @@ public class Loan {
             this.user = null;
             this.libStaffMember = null;
             this.retrievalDate = null;
+            this.isActive = false;
         }
 
     }
 
     // Constructor (loan to a staff member)
-    public Loan(Library library, Book book, LibraryStaff staff) {
+    public Loan(Library library, Item item, LibraryStaff staff) {
         this.loanDate = LocalDate.now();
         this.amountOfRenewals = 0;
         this.retrieved = false;
@@ -129,6 +126,7 @@ public class Loan {
             this.item = item;
             this.user = null;
             this.libStaffMember = staff;
+            this.isActive = true;
 
             this.item.setAvailable(false);
             this.libStaffMember.incrementActiveLoans();
@@ -140,6 +138,7 @@ public class Loan {
             this.user = null;
             this.libStaffMember = null;
             this.retrievalDate = null;
+            this.isActive = false;
 
             System.out.println("Sorry, the loan cannot be completed either because the" +
                     " item is not available at the moment, you have been suspended, or" +
@@ -152,7 +151,7 @@ public class Loan {
         return library;
     }
 
-    public Multimedia getItem() {
+    public Item getItem() {
         return item;
     }
 
@@ -180,12 +179,31 @@ public class Loan {
         return retrieved;
     }
 
+    public boolean getIsActive() {
+        return isActive;
+    }
+
     // Setters --------------------------------------------------------------------------
     public void setRetrievalDate(LocalDate newRetrievalDate) {
         this.retrievalDate = newRetrievalDate;
     }
 
+    public void setRetrieved(boolean newStatus) {
+        this.retrieved = newStatus;
+    }
+
+    public void setIsActive(boolean newStatus) {
+        this.isActive = newStatus;
+    }
+
     // Methods --------------------------------------------------------------------------
+
+    @Override
+    public String toString() {
+        return "Item ID: " + (this.item).getId() + "\n" +
+                "User: " + (this.user).getName() + "\n" +
+                "Retrieval Date: " + (this.retrievalDate).toString() + "\n";
+    }
 
     /**
      * Method to try and renew the loan made to a user or staff member.
