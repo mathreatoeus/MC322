@@ -56,7 +56,7 @@ public abstract class Event {
             this.exhibitors = exhibitors;
             this.duration = duration;
         }
-        
+
         // Getters **********************************************************************
         public String[] getExhibitors() {
             return exhibitors;

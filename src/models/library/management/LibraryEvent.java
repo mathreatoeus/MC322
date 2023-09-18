@@ -1,6 +1,8 @@
 package models.library.management;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import models.people.Person;
 
 public abstract class LibraryEvent {
     // Private Attributes ---------------------------------------------------------------
@@ -8,6 +10,7 @@ public abstract class LibraryEvent {
     private final String topic;
     private LocalDateTime dateTime;
     private String place;
+    private final ArrayList<Person> peopleAttending;
 
     // Constructor ----------------------------------------------------------------------
     public LibraryEvent(EventType type, String topic, LocalDateTime dateTime, String place) {
@@ -15,6 +18,7 @@ public abstract class LibraryEvent {
         this.topic = topic;
         this.dateTime = dateTime;
         this.place = place;
+        this.peopleAttending = new ArrayList<>();
     }
 
     // Enums ----------------------------------------------------------------------------
@@ -39,6 +43,10 @@ public abstract class LibraryEvent {
         return place;
     }
 
+    public ArrayList<Person> getPeopleAttending() {
+        return peopleAttending;
+    }
+
     // Setters --------------------------------------------------------------------------
     private void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
@@ -46,5 +54,10 @@ public abstract class LibraryEvent {
 
     private void setPlace(String place) {
         this.place = place;
+    }
+
+    // Methods --------------------------------------------------------------------------
+    public void addPersonAttending(Person person) {
+        (this.getPeopleAttending()).add(person);
     }
 }
