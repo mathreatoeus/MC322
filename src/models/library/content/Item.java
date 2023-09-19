@@ -3,11 +3,13 @@ package models.library.content;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
 import models.library.management.Loan;
 import models.library.management.Reserve;
+import models.library.management.Comment;
 
 public abstract class Item {
     // Private Attributes ---------------------------------------------------------------
@@ -20,6 +22,7 @@ public abstract class Item {
     private final LocalDate additionDate;
     private Loan currentLoan;
     private final PriorityQueue<Reserve> reserves;
+    private final ArrayList<Comment> comments;
 
     // Constructor ----------------------------------------------------------------------
     public Item(String title, LocalDate publicationDate, int numCopies) {
@@ -32,10 +35,11 @@ public abstract class Item {
         this.additionDate = LocalDate.now();
         this.currentLoan = null;
         this.reserves = new PriorityQueue<>(new ReservesComparator());
+        this.comments = new ArrayList<>();
     }
 
     // Custom Comparator ----------------------------------------------------------------
-    private class ReservesComparator implements Comparator<Reserve> {
+    private static class ReservesComparator implements Comparator<Reserve> {
         @Override
         public int compare(Reserve reserve1, Reserve reserve2) {
             return reserve2.getPickupDate().compareTo(reserve1.getPickupDate());
@@ -77,6 +81,10 @@ public abstract class Item {
 
     public PriorityQueue<Reserve> getReserves() {
         return reserves;
+    }
+
+    public ArrayList<Comment> getComments() {
+        return comments;
     }
 
     // Setters --------------------------------------------------------------------------

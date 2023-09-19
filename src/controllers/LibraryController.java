@@ -3,47 +3,60 @@ package controllers;
 import models.library.content.Item;
 import models.people.Person;
 import models.library.management.Loan;
+import models.library.management.Reserve;
 import models.library.management.Library;
+import java.util.HashSet;
+import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class LibraryController {
     // Private Attributes ---------------------------------------------------------------
-    private final ArrayList<Item> items;
-    private final ArrayList<Loan> activeLoans;
+    private final HashMap<String, Item> items;
+    private final HashSet<Loan> activeLoans;
+    private final ArrayList<Reserve> reserves;
 
     // Constructor ----------------------------------------------------------------------
     public LibraryController() {
-        this.items = new ArrayList<>();
-        this.activeLoans = new ArrayList<>();
+        this.items = new HashMap<>();
+        this.activeLoans = new HashSet<>();
+        this.reserves = new ArrayList<>();
     }
 
     // Methods --------------------------------------------------------------------------
 
     /**
-     * @return item list.
+     * @return item map.
      */
-    public ArrayList<Item> listItems() {
+    public HashMap<String, Item> listItems() {
         return items;
     }
 
     /**
-     * @return active loans list.
+     * @return active loans set.
      */
-    public ArrayList<Loan> listLoans() {
+    public HashSet<Loan> listLoans() {
         return activeLoans;
     }
 
     /**
-     * Adds an item to the items list.
+     * @return reserve list.
+     */
+    public ArrayList<Reserve> listReserves() {
+        return reserves;
+    }
+
+    /**
+     * Adds an item to the items map.
      *
      * @param item item to add.
      */
     public void addItem(Item item) {
-        this.items.add(item);
+        this.items.put(item.getId(), item);
     }
 
     /**
-     * Adds a loan to the active loans list.
+     * Adds a loan to the active loans set.
      *
      * @param loan loan to add.
      */
@@ -52,7 +65,16 @@ public class LibraryController {
     }
 
     /**
-     * Removes an item from the items list.
+     * Adds a reserve to the reserve list.
+     *
+     * @param reserve reserve to be added.
+     */
+    public void addReserve(Reserve reserve) {
+        (this.reserves).add(reserve);
+    }
+
+    /**
+     * Removes an item from the items map.
      *
      * @param item item to remove.
      */
@@ -61,12 +83,21 @@ public class LibraryController {
     }
 
     /**
-     * Removes a loan from the active loans list.
+     * Removes a loan from the active loans set.
      *
      * @param loan loan to be removed.
      */
     public void removeLoan(Loan loan) {
         this.activeLoans.remove(loan);
+    }
+
+    /**
+     * Removes a reserve from the reserve list.
+     *
+     * @param reserve reserve to be removed.
+     */
+    public void removeReserve(Reserve reserve) {
+        (this.reserves).remove(reserve);
     }
 
     /**
@@ -76,11 +107,10 @@ public class LibraryController {
      * @param item to loan.
      * @return true on success and false on failure.
      */
-    public boolean lendItem(Library library, Item item, Person user) {
+    public boolean lendItem(Item item, Person user) {
         if (!user.getIsSuspended() && item.getAvailable()) {
             // Loan logic will go here.
             return true;
-
         }
         else {
             return false;
@@ -95,5 +125,15 @@ public class LibraryController {
      */
     public void retrieveItem(Person user, Item item) {
         // Retrieval logic will go here.
+    }
+
+    /**
+     * Searches for an Item by its ID.
+     *
+     * @param id the item's ID.
+     * @return the item with the corresponding ID.
+     */
+    public Item searchItemById(String id) {
+        return items.get(id);
     }
 }

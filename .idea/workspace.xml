@@ -6,32 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="86e58f9d-81cc-445c-a4c9-cf75aa14a3ac" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/AudibleContent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/DailyNews.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/infrastructure/Equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/management/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Journal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/management/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Magazine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Multimedia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/MultimediaResources.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/infrastructure/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/management/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/management/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/management/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/management/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/management/ReportType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/management/ReportType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/management/Reserve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/management/Reserve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/management/RoomReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/infrastructure/RoomReservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/management/RoomReservationStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/library/infrastructure/RoomReservationStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/staff/LibraryStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/LibraryStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/staff/StaffLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/StaffLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/users/ExternalUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/ExternalUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/users/FacultyUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/FacultyUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/users/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/users/UniversityStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/UniversityStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/LibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/LibraryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/people/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/people/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/LibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/LibraryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/PersonView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/PersonView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +46,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;m244088&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/mathr/Desktop/Folders &amp; Files/Important Stuff/Materiais Faculdade/4º Semestre/MC322/LibraryManagement&quot;
   }
 }</component>
