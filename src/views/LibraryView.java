@@ -30,14 +30,16 @@ public class LibraryView {
     public void displayItems() {
         HashMap<String, Item> items = (this.libController).listItems();
         System.out.println("---------- Item List ----------");
+        System.out.println();
 
         for (HashMap.Entry<String, Item> item : items.entrySet()) {
             System.out.println("-------------------------------");
-            System.out.println(item.toString());                            // Overriden.
-            System.out.println("-------------------------------");
+            System.out.print((item.getValue()));
+            System.out.println("-------------------------------\n");
         }
 
         System.out.println("-------------------------------");
+        System.out.println();
     }
 
     /**
@@ -46,10 +48,11 @@ public class LibraryView {
     public void displayActiveLoans() {
         HashSet<Loan> loans = (this.libController).listLoans();
         System.out.println("---------- Loan List ----------");
+        System.out.println();
 
         for (Loan loan : loans) {
             System.out.println("-------------------------------");
-            System.out.println(loan.toString());                            // Overriden.
+            System.out.println(loan.toString());
             System.out.println("-------------------------------");
         }
     }
@@ -65,7 +68,7 @@ public class LibraryView {
         }
     }
 
-    public void voidshowLoanStatus(boolean status) {
+    public void displayLoanStatus(boolean status) {
         if (status){
             System.out.println("Loan completed!");
         }

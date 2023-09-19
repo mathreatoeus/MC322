@@ -8,6 +8,7 @@ import models.library.management.Library;
 import java.util.HashSet;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class LibraryController {
     // Private Attributes ---------------------------------------------------------------
@@ -106,11 +107,10 @@ public class LibraryController {
      * @param item to loan.
      * @return true on success and false on failure.
      */
-    public boolean lendItem(Library library, Item item, Person user) {
+    public boolean lendItem(Item item, Person user) {
         if (!user.getIsSuspended() && item.getAvailable()) {
             // Loan logic will go here.
             return true;
-
         }
         else {
             return false;
@@ -125,5 +125,15 @@ public class LibraryController {
      */
     public void retrieveItem(Person user, Item item) {
         // Retrieval logic will go here.
+    }
+
+    /**
+     * Searches for an Item by its ID.
+     *
+     * @param id the item's ID.
+     * @return the item with the corresponding ID.
+     */
+    public Item searchItemById(String id) {
+        return items.get(id);
     }
 }

@@ -13,7 +13,7 @@ public class PersonController {
     }
 
     // Methods --------------------------------------------------------------------------
-    
+
     /**
      * Method that returns the list of current active users.
      *
@@ -35,8 +35,6 @@ public class PersonController {
                 return user;
             }
         }
-
-        System.out.println("Sorry. There is no user with that social ID on our system.");
         return null;
     }
 
@@ -52,8 +50,6 @@ public class PersonController {
                 return student;
             }
         }
-        System.out.println("Sorry, there is no student with the specified student Id on" +
-                " our system.");
         return null;
     }
 
@@ -69,8 +65,6 @@ public class PersonController {
                 return staff;
             }
         }
-        System.out.println("Sorry, there is no staff member with the specified staff ID on" +
-                " our system.");
         return null;
     }
 
@@ -86,8 +80,32 @@ public class PersonController {
                 return faculty;
             }
         }
-        System.out.println("Sorry, there is no faculty member with the specified faculty ID on" +
-                " our system.");
         return null;
+    }
+
+    /**
+     * Tries to add a user to the user list.
+     *
+     * @param user user to add.
+     * @return true on success and false on failure.
+     */
+    public boolean addUser(Person user) {
+        if (!((this.users).contains(user))) {
+            (this.users).add(user);
+            return true;
+        }
+        else {
+            System.out.println("This user has already been added.");
+            return false;
+        }
+    }
+
+    /**
+     * Removes a user from the user list.
+     *
+     * @param user user to remove.
+     */
+    public void removeUser(Person user) {
+        this.users.remove(user);
     }
 }

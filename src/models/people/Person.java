@@ -12,7 +12,7 @@ import models.library.management.Reserve;
  */
 
 abstract public class Person {
-    // Protected Attributes -------------------------------------------------------------
+    // Private Attributes -------------------------------------------------------------
 
     private String name;
     private String surname;
@@ -131,6 +131,12 @@ abstract public class Person {
     }
 
     // Methods --------------------------------------------------------------------------
+
+    @Override
+    public String toString() {
+        return "Name: " + this.name + " " + this.surname + "\n" +
+                "Social ID: " + this.socialId;
+    }
 
     /**
      * Method to try and change the current user's username upon authentication.
