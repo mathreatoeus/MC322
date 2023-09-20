@@ -1,6 +1,6 @@
 # ShelfSense Library Management System
 Project to be presented as part of the MC322 discipline at the University of Campinas.
-Version 1.2.0
+Version 1.6
 
 ## Features
 - Support for multiple media types
