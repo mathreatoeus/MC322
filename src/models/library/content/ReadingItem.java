@@ -3,7 +3,7 @@ package models.library.content;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class ReadingItem {
+public abstract class ReadingItem {
     // Enums -----------------------------------------------------------------------------
     public enum ReadingItemType {
         BOOK, EBOOK, DAILY_NEWS, JOURNAL, MAGAZINE

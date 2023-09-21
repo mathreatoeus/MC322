@@ -2,7 +2,7 @@ package models.library.content;
 
 import java.time.LocalDate;
 
-public class MultimediaItem {
+public abstract class MultimediaItem {
     // Enum -----------------------------------------------------------------------------
     public enum MultimediaType {
         AUDIO, VIDEO, SOFTWARE

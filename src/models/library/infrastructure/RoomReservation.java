@@ -39,7 +39,7 @@ public abstract class RoomReservation {
             return status;
         }
 
-        private Person getAmbassador() {
+        public Person getAmbassador() {
             return ambassador;
         }
 
