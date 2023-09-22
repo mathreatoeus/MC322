@@ -1,0 +1,115 @@
+package models.library.infrastructure;
+
+public abstract class Equipment {
+    // Enums ----------------------------------------------------------------------------
+    private enum InformaticsType {
+        DESKTOP, LAPTOP, TABLET
+    }
+
+    private enum AudiovisualType {
+        PROJECTOR, SCREEN, SPEAKER, HEADPHONE, CAMERA, MICROPHONE
+    }
+
+    private enum PrintingType {
+        PRINTER, SCANNER, FAX
+    }
+
+    // **********************************************************************************
+    public static class Informatics {
+        // Private Attributes ***************************************
+        private final String id;
+        private final InformaticsType type;
+        private boolean available;
+
+        // Constructor **********************************************
+        public Informatics(String id, InformaticsType type) {
+            this.id = id;
+            this.type = type;
+            this.available = true;
+        }
+
+        // Getters **************************************************
+        public String getId() {
+            return id;
+        }
+
+        public InformaticsType getType() {
+            return type;
+        }
+
+        public boolean getAvailable() {
+            return available;
+        }
+
+        // Setters **************************************************
+        public void setAvailable(boolean newStatus) {
+            this.available = newStatus;
+        }
+    }
+
+    // **********************************************************************************
+    public static class AudiovisualEquipment {
+        // Private Attributes ***********************************
+        private final String id;
+        private final AudiovisualType type;
+        private boolean available;
+
+        // Constructor ******************************************
+        public AudiovisualEquipment(String id, AudiovisualType type) {
+            this.id = id;
+            this.type = type;
+            this.available = true;
+        }
+
+        // Getters **********************************************
+        public String getId() {
+            return id;
+        }
+
+        public AudiovisualType getType() {
+            return type;
+        }
+
+        public boolean getAvailable() {
+            return available;
+        }
+
+        // Setters **********************************************
+        public void setAvailable(boolean newStatus) {
+            this.available = newStatus;
+        }
+    }
+
+    // **********************************************************************************
+    public static class PrintingEquipment {
+        // Private Attributes ***********************************
+        private final String id;
+        private final PrintingType type;
+        private boolean available;
+
+        // Constructor ******************************************
+        public PrintingEquipment(String id, PrintingType type) {
+            this.id = id;
+            this.type = type;
+            this.available = true;
+        }
+
+        // Getters **********************************************
+        public String getId() {
+            return id;
+        }
+
+        public PrintingType getType() {
+            return type;
+        }
+
+        public boolean getAvailable() {
+            return available;
+        }
+
+        // Setters **********************************************
+        public void setAvailable(boolean newStatus) {
+            this.available = newStatus;
+        }
+    }
+}
