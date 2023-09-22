@@ -28,7 +28,7 @@ public class ReadingItem {
         public Book(String title, LocalDate publicationDate, int numCopies, String isbn,
                     String authorName, String authorSurname, byte edition,
                     ConservationState conservationState, String location) {
-            super(title, publicationDate, numCopies);
+            super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.BOOK;
             this.isbn = isbn;
             this.authorName = authorName;
@@ -91,7 +91,7 @@ public class ReadingItem {
         public Ebook(String title, LocalDate publicationDate, int numCopies, String authorFullName,
                      String format, byte numOfLicenses, String url, ArrayList<String> readingRequisites,
                      String[] availabilityInterval) {
-            super(title, publicationDate, numCopies);
+            super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.EBOOK;
             this.authorFullName = authorFullName;
             this.format = format;
@@ -144,13 +144,17 @@ public class ReadingItem {
         // Private Attributes ***********************************************************
         private final ReadingItemType type;
         private final String publisher;
+        private String location; 
+        private String numCopiesAvailable;  
 
         // Constructor ******************************************************************
         public DailyNews(String title, LocalDate publicationDate, int numCopies,
-                         String publisher) {
-            super(title, publicationDate, numCopies);
+                         String publisher, String location, String numCopiesAvailable) {
+            super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.DAILY_NEWS;
             this.publisher = publisher;
+            this.location = location;
+            this.numCopiesAvailable = numCopiesAvailable;
         }
 
         // Getters **********************************************************************
@@ -161,7 +165,24 @@ public class ReadingItem {
         public String getPublisher() {
             return publisher;
         }
+        
+        public String getLocation() {
+            return location;
+        }
+
+        public String getNumCopiesAvailable() {
+            return numCopiesAvailable;
+        }
     }
+
+        // Setters **********************************************************************
+        public String setLocation(String location) {
+            this.location = location;
+        }  
+
+        public String setNumCopiesAvailable(String numCopiesAvailable) {
+            this.numCopiesAvailable = numCopiesAvailable;
+        }
 
     public static class Journal extends Item {
         // Private Attributes ***********************************************************
@@ -169,15 +190,19 @@ public class ReadingItem {
         private String section;
         private final String knowledgeArea;
         private ConservationState conservationState;
+        private String location;
+        private String numCopiesAvailable;
 
         // Constructor ******************************************************************
         public Journal(String title, LocalDate publicationDate, int numCopies, String section,
-                       String knowledgeArea, ConservationState conservationState) {
-            super(title, publicationDate, numCopies);
+                       String knowledgeArea, ConservationState conservationState, String location, String numCopiesAvailable) {
+            super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.JOURNAL;
             this.section = section;
             this.knowledgeArea = knowledgeArea;
             this.conservationState = conservationState;
+            this.location = location;
+            this.numCopiesAvailable = numCopiesAvailable;
         }
 
         // Getters **********************************************************************
@@ -197,6 +222,14 @@ public class ReadingItem {
             return conservationState;
         }
 
+        public String getLocation() {
+            return location;
+        }
+
+        public String getNumCopiesAvailable() {
+            return numCopiesAvailable;
+        }
+
         // Setters **********************************************************************
         private void setSection(String section) {
             this.section = section;
@@ -205,6 +238,14 @@ public class ReadingItem {
         private void setConservationState(ConservationState conservationState) {
             this.conservationState = conservationState;
         }
+
+        public String setLocation(String location) {
+            this.location = location;
+        }  
+
+        public String setNumCopiesAvailable(String numCopiesAvailable) {
+            this.numCopiesAvailable = numCopiesAvailable;
+        }
     }
 
     public static class Magazine extends Item {
@@ -212,14 +253,18 @@ public class ReadingItem {
         private final ReadingItemType type;
         private String section;
         private ConservationState conservationState;
+        private String location;
+        private String numCopiesAvailable;
 
         // Constructor ******************************************************************
         public Magazine(String title, LocalDate publicationDate, int numCopies,
-                        ReadingItemType type, String section, ConservationState conservationState) {
-            super(title, publicationDate, numCopies);
+                        ReadingItemType type, String section, ConservationState conservationState, 
+                        String location, String numCopiesAvailable) {
+            super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.MAGAZINE;
             this.section = section;
             this.conservationState = conservationState;
+
         }
 
         // Getters **********************************************************************
@@ -234,6 +279,14 @@ public class ReadingItem {
         public ConservationState getConservationState() {
             return conservationState;
         }
+        
+        public String getLocation() {
+            return location;
+        }
+
+        public String getNumCopiesAvailable() {
+            return numCopiesAvailable;
+        }
 
         // Setters **********************************************************************
         private void setSection(String section) {
@@ -243,5 +296,13 @@ public class ReadingItem {
         private void setConservationState(ConservationState conservationState) {
             this.conservationState = conservationState;
         }
+
+        public String setLocation(String location) {
+            this.location = location;
+        }  
+
+        public String setNumCopiesAvailable(String numCopiesAvailable) {
+            this.numCopiesAvailable = numCopiesAvailable;
+        }  
     }
 }

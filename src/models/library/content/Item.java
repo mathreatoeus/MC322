@@ -23,9 +23,14 @@ public abstract class Item {
     private Loan currentLoan;
     private final PriorityQueue<Reserve> reserves;
     private final ArrayList<Comment> comments;
+    private final String yearOfPublication;
+    private final String genre;
+    private final String synopsis;
+    private final String urlLinkForCover;
 
     // Constructor ----------------------------------------------------------------------
-    public Item(String title, LocalDate publicationDate, int numCopies) {
+    public Item(String title, LocalDate publicationDate, int numCopiesString yearOfPublication, 
+                String genre, String synopsis, String urlLinkForCover) {
         this.title = title;
         this.publicationDate = publicationDate;
         this.numCopies = numCopies;
@@ -36,6 +41,10 @@ public abstract class Item {
         this.currentLoan = null;
         this.reserves = new PriorityQueue<>(new ReservesComparator());
         this.comments = new ArrayList<>();
+        this.yearOfPublication = yearOfPublication;
+        this.genre = genre;
+        this.synopsis = synopsis;
+        this.urlLinkForCover = urlLinkForCover;
     }
 
     // Custom Comparator ----------------------------------------------------------------
@@ -85,6 +94,22 @@ public abstract class Item {
 
     public ArrayList<Comment> getComments() {
         return comments;
+    }
+
+    public String getYearOfPublication() {
+        return yearOfPublication;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public String getUrlLinkForCover() {
+        return urlLinkForCover;
     }
 
     // Setters --------------------------------------------------------------------------
