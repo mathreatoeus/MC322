@@ -23,11 +23,12 @@ public class ReadingItem {
         private final byte edition;
         private ConservationState conservationState;
         private String location;
+        private int numCopiesAvailable;  
 
         // Constructor ******************************************************************
         public Book(String title, LocalDate publicationDate, int numCopies, String isbn,
                     String authorName, String authorSurname, byte edition,
-                    ConservationState conservationState, String location) {
+                    ConservationState conservationState, String location, int numCopiesAvailable) {
             super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.BOOK;
             this.isbn = isbn;
@@ -36,6 +37,7 @@ public class ReadingItem {
             this.edition = edition;
             this.conservationState = conservationState;
             this.location = location;
+            this.numCopiesAvailable = numCopiesAvailable;
         }
 
         // Getters **********************************************************************
@@ -67,13 +69,21 @@ public class ReadingItem {
             return location;
         }
 
+        public int getNumCopiesAvailable() {
+            return numCopiesAvailable;
+        }
+
         // Setters **********************************************************************
         public void setConservationState(ConservationState conservationState) {
             this.conservationState = conservationState;
         }
 
-        public void setLocation(String location) {
-            this.location = location;
+        public void setLocation(String newLocation) {
+            this.location = newLocation;
+        }
+
+        public void setNumCopiesAvailable(int newNumCopiesAvailable) {
+            this.numCopiesAvailable = newNumCopiesAvailable;
         }
     }
 
@@ -131,12 +141,12 @@ public class ReadingItem {
         }
 
         // Setters **********************************************************************
-        public void setNumOflicenses(byte numOflicenses) {
-            this.numOflicenses = numOflicenses;
+        public void setNumOflicenses(byte newNumOflicenses) {
+            this.numOflicenses = newNumOflicenses;
         }
 
-        public void setUrl(String url) {
-            this.url = url;
+        public void setUrl(String newUrl) {
+            this.url = newUrl;
         }
     }
 
@@ -145,16 +155,18 @@ public class ReadingItem {
         private final ReadingItemType type;
         private final String publisher;
         private String location; 
-        private String numCopiesAvailable;  
+        private int numCopiesAvailable;  
+        private ConservationState conservationState;
 
         // Constructor ******************************************************************
         public DailyNews(String title, LocalDate publicationDate, int numCopies,
-                         String publisher, String location, String numCopiesAvailable) {
+                         String publisher, String location, int numCopiesAvailable, ConservationState conservationState) {
             super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.DAILY_NEWS;
             this.publisher = publisher;
             this.location = location;
             this.numCopiesAvailable = numCopiesAvailable;
+            this.conservationState = conservationState;
         }
 
         // Getters **********************************************************************
@@ -173,15 +185,23 @@ public class ReadingItem {
         public String getNumCopiesAvailable() {
             return numCopiesAvailable;
         }
+
+        public ConservationState getConservationState() {
+            return conservationState;
+        }
     }
 
         // Setters **********************************************************************
-        public String setLocation(String location) {
-            this.location = location;
+        public void setConservationState(ConservationState newConservationState) {
+            this.conservationState = newConservationState;
+        }
+
+        public String setLocation(String newLocation) {
+            this.location = newLocation;
         }  
 
-        public String setNumCopiesAvailable(String numCopiesAvailable) {
-            this.numCopiesAvailable = numCopiesAvailable;
+        public String setNumCopiesAvailable(int newNumCopiesAvailable) {
+            this.numCopiesAvailable = newNumCopiesAvailable;
         }
 
     public static class Journal extends Item {
@@ -191,11 +211,11 @@ public class ReadingItem {
         private final String knowledgeArea;
         private ConservationState conservationState;
         private String location;
-        private String numCopiesAvailable;
+        private int numCopiesAvailable;
 
         // Constructor ******************************************************************
         public Journal(String title, LocalDate publicationDate, int numCopies, String section,
-                       String knowledgeArea, ConservationState conservationState, String location, String numCopiesAvailable) {
+                       String knowledgeArea, ConservationState conservationState, String location, int numCopiesAvailable) {
             super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.JOURNAL;
             this.section = section;
@@ -231,20 +251,20 @@ public class ReadingItem {
         }
 
         // Setters **********************************************************************
-        private void setSection(String section) {
-            this.section = section;
+        private void setSection(String newSection) {
+            this.section = newSection;
         }
 
-        private void setConservationState(ConservationState conservationState) {
-            this.conservationState = conservationState;
+        private void setConservationState(ConservationState newConservationState) {
+            this.conservationState = newConservationState;
         }
 
-        public String setLocation(String location) {
-            this.location = location;
+        public String setLocation(String newLocation) {
+            this.location = newLocation;
         }  
 
-        public String setNumCopiesAvailable(String numCopiesAvailable) {
-            this.numCopiesAvailable = numCopiesAvailable;
+        public String setNumCopiesAvailable(int newNumCopiesAvailable) {
+            this.numCopiesAvailable = newNumCopiesAvailable;
         }
     }
 
@@ -254,16 +274,18 @@ public class ReadingItem {
         private String section;
         private ConservationState conservationState;
         private String location;
-        private String numCopiesAvailable;
+        private int numCopiesAvailable;
 
         // Constructor ******************************************************************
         public Magazine(String title, LocalDate publicationDate, int numCopies,
                         ReadingItemType type, String section, ConservationState conservationState, 
-                        String location, String numCopiesAvailable) {
+                        String location, int numCopiesAvailable) {
             super(title, publicationDate, numCopies, yearOfPublication, genre, synopsis, urlLinkForCover);
             this.type = ReadingItemType.MAGAZINE;
             this.section = section;
             this.conservationState = conservationState;
+            this.location = location;
+            this.numCopiesAvailable = numCopiesAvailable;
 
         }
 
@@ -289,20 +311,20 @@ public class ReadingItem {
         }
 
         // Setters **********************************************************************
-        private void setSection(String section) {
-            this.section = section;
+        private void setSection(String newSection) {
+            this.section = newSection;
         }
 
-        private void setConservationState(ConservationState conservationState) {
-            this.conservationState = conservationState;
+        private void setConservationState(ConservationState newConservationState) {
+            this.conservationState = newConservationState;
         }
 
-        public String setLocation(String location) {
-            this.location = location;
+        public String setLocation(String newLocation) {
+            this.location = newLocation;
         }  
 
-        public String setNumCopiesAvailable(String numCopiesAvailable) {
-            this.numCopiesAvailable = numCopiesAvailable;
+        public String setNumCopiesAvailable(int newNumCopiesAvailable) {
+            this.numCopiesAvailable = newNumCopiesAvailable;
         }  
     }
 }
