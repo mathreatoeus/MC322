@@ -9,10 +9,10 @@ public class Room {
     private final String roomNumber;
     private final RoomType type;
     private final int maxCapacity;
-    private final ArrayList<Equipment.Informatics> informaticsEquipment;
-    private final ArrayList<Equipment.AudiovisualEquipment> audiovisualEquipment;
-    private final ArrayList<Equipment.PrintingEquipment> printingEquipment;
-    private final ArrayList<LocalDateTime[]> reserves;             // {{Start , Finish}}.
+    private ArrayList<Equipment.Informatics> informaticsEquipment;
+    private ArrayList<Equipment.AudiovisualEquipment> audiovisualEquipment;
+    private ArrayList<Equipment.PrintingEquipment> printingEquipment;
+    private ArrayList<LocalDateTime[]> reserves;             // {{Start , Finish}}.
     private boolean available;
     private final boolean hasComputer;
     private final boolean hasProjector;
