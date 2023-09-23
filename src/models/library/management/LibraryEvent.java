@@ -10,7 +10,7 @@ public abstract class LibraryEvent {
     private final String topic;
     private LocalDateTime dateTime;
     private String place;
-    private final ArrayList<Person> peopleAttending;
+    private ArrayList<Person> peopleAttending;
 
     // Constructor ----------------------------------------------------------------------
     public LibraryEvent(EventType type, String topic, LocalDateTime dateTime, String place) {

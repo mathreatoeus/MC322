@@ -52,7 +52,7 @@ public class Library {
     // Methods -------------------------------------------------------------------------
 
     /**
-     * Method to try and add a Book to the Library.
+     * Method to try and add an Item to the Library.
      *
      * @param newItem item to add.
      * @return true on success and false on failure.
@@ -60,6 +60,22 @@ public class Library {
     public boolean addItem(Item newItem) {
         if (!this.items.contains(newItem)) {
             (this.items).add(newItem);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Method to try and remove an Item to the Library.
+     *
+     * @param newItem item to remove.
+     * @return true on success and false on failure.
+     */
+    public boolean removeItem(Item newItem) {
+        if (!this.items.contains(newItem)) {
+            (this.items).remove(newItem);
             return true;
         }
         else {
