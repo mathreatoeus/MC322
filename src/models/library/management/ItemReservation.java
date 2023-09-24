@@ -13,7 +13,7 @@ public class ItemReservation extends Reserve {
     public ItemReservation(Person user, Item item) {
         super(user);
         this.item = item;
-        this.pickupDate = LocalDate.now();    // Pickup date logic yet to be implemented.
+        this.pickupDate = null;    // Pickup date logic yet to be implemented.
     }
 
     // Getters --------------------------------------------------------------------------

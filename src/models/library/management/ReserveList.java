@@ -2,9 +2,7 @@ package models.library.management;
 
 import java.util.ArrayList;
 
-import models.people.Person;
-
-public class ReserveList<T> {
+public class ReserveList<T extends Reserve> {
     // Private Attributes ---------------------------------------------------------------
     private final ArrayList<T> reservations;
     private int numReservations;
@@ -30,8 +28,7 @@ public class ReserveList<T> {
     }
 
     // Methods --------------------------------------------------------------------------
-    public <T> boolean makeReservation(T objectToReserve, Person user) {
-        // Reservation logic will go here...
-        return true;
+    public void addReservation(T reservation) {
+        this.reservations.add(reservation);
     }
 }
