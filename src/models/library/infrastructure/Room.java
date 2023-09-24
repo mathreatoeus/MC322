@@ -1,5 +1,7 @@
 package models.library.infrastructure;
 
+import models.library.management.RoomReservation;
+
 import java.util.ArrayList;
 
 import java.time.LocalDateTime;
