@@ -1,4 +1,4 @@
-package models.library.infrastructure;
+package models.library.management;
 
 public enum RoomReservationStatus {
     PENDING, CONFIRMED, CANCELED

@@ -1,6 +1,6 @@
 package exceptions;
 
-import models.library.infrastructure.RoomReservation;
+import models.library.management.RoomReservation;
 import models.library.management.Reserve;
 import models.people.Person;
 

@@ -1,32 +1,36 @@
-package models.library.infrastructure;
+package models.library.management;
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
+import models.library.infrastructure.Room;
 import models.people.Person;
 
 public abstract class RoomReservation {
     // **********************************************************************************
-    public static class IndividualRoomReserve {
+
+    /**
+     * Cass that represents a reservation of an Individual Room.
+     */
+    public static class IndividualRoomReserve extends Reserve {
         // Private Attributes ***************************************
         private final Room room;
         private RoomReservationStatus status;
-        private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
         private LocalDateTime finishDateTime;
 
         // Constructor **********************************************
-        public IndividualRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
+        public IndividualRoomReserve(Person ambassador, Room room, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
+            super(ambassador);
             this.room = room;
             status = RoomReservationStatus.PENDING;
-            this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
             this.finishDateTime = finishDateTime;
 
-            (this.users).add(this.ambassador);
+            (this.users).add(ambassador);
             (this.room).addIndividualReserve(this);
         }
 
@@ -39,10 +43,6 @@ public abstract class RoomReservation {
             return status;
         }
 
-        public Person getAmbassador() {
-            return ambassador;
-        }
-
         private ArrayList<Person> getUsers() {
             return users;
         }
@@ -75,10 +75,13 @@ public abstract class RoomReservation {
     }
 
     // **********************************************************************************
-    public static class GroupRoomReserve {
+
+    /**
+     * Clas that represents a reservation of a Group Room.
+     */
+    public static class GroupRoomReserve extends Reserve {
         private final Room room;
         private RoomReservationStatus status;
-        private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
         private LocalDateTime finishDateTime;
@@ -86,14 +89,14 @@ public abstract class RoomReservation {
         // Constructor **********************************************
         public GroupRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
+            super(ambassador);
             this.room = room;
             status = RoomReservationStatus.PENDING;
-            this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
             this.finishDateTime = finishDateTime;
 
-            (this.users).add(this.ambassador);
+            (this.users).add(ambassador);
             (this.room).addGroupReserve(this);
         }
 
@@ -106,10 +109,6 @@ public abstract class RoomReservation {
             return status;
         }
 
-        private Person getAmbassador() {
-            return ambassador;
-        }
-
         private ArrayList<Person> getUsers() {
             return users;
         }
@@ -142,10 +141,13 @@ public abstract class RoomReservation {
     }
 
     // **********************************************************************************
-    public static class SilentRoomReserve {
+
+    /**
+     * Class that represents a reservation of a Silent Room.
+     */
+    public static class SilentRoomReserve extends Reserve {
         private final Room room;
         private RoomReservationStatus status;
-        private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
         private LocalDateTime finishDateTime;
@@ -153,14 +155,14 @@ public abstract class RoomReservation {
         // Constructor **********************************************
         public SilentRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
+            super(ambassador);
             this.room = room;
             status = RoomReservationStatus.PENDING;
-            this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
             this.finishDateTime = finishDateTime;
 
-            (this.users).add(this.ambassador);
+            (this.users).add(ambassador);
             (this.room).addSilentReserve(this);
         }
 
@@ -173,10 +175,6 @@ public abstract class RoomReservation {
             return status;
         }
 
-        private Person getAmbassador() {
-            return ambassador;
-        }
-
         private ArrayList<Person> getUsers() {
             return users;
         }
@@ -209,10 +207,13 @@ public abstract class RoomReservation {
     }
 
     // **********************************************************************************
-    public static class MultimediaRoomReserve {
+
+    /**
+     * Class that represents a reservation of a Multimedia Room.
+     */
+    public static class MultimediaRoomReserve extends Reserve {
         private final Room room;
         private RoomReservationStatus status;
-        private final Person ambassador;
         private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
         private LocalDateTime finishDateTime;
@@ -220,14 +221,14 @@ public abstract class RoomReservation {
         // Constructor **********************************************
         public MultimediaRoomReserve(Room room, Person ambassador, LocalDateTime startDateTime,
                                      LocalDateTime finishDateTime) {
+            super(ambassador);
             this.room = room;
             status = RoomReservationStatus.PENDING;
-            this.ambassador = ambassador;
             this.users = new ArrayList<>();
             this.startDateTime = startDateTime;
             this.finishDateTime = finishDateTime;
 
-            (this.users).add(this.ambassador);
+            (this.users).add(ambassador);
             (this.room).addMultimediaReserve(this);
         }
 
@@ -238,10 +239,6 @@ public abstract class RoomReservation {
 
         public RoomReservationStatus getStatus() {
             return status;
-        }
-
-        private Person getAmbassador() {
-            return ambassador;
         }
 
         private ArrayList<Person> getUsers() {
