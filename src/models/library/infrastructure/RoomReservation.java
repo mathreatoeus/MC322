@@ -12,7 +12,7 @@ public abstract class RoomReservation {
         private final Room room;
         private RoomReservationStatus status;
         private final Person ambassador;
-        private ArrayList<Person> users;
+        private final ArrayList<Person> users;
         private LocalDateTime startDateTime;
         private LocalDateTime finishDateTime;
 
