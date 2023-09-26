@@ -1,6 +1,7 @@
 import controllers.LibraryController;
 import controllers.PersonController;
 import controllers.ReportController;
+import exceptions.InvalidCredentialsException;
 import models.library.content.Item;
 import views.LibraryView;
 import views.PersonView;
@@ -51,6 +52,37 @@ public class Main {
 
         // Menu -------------------------------------------------------------------------
         Scanner scanner = new Scanner(System.in);
+
+        // User identification and authentication
+        System.out.println("---- Sign In ----");
+        System.out.println();
+        System.out.println("Welcome to ShelfSense Library Management System!");
+        System.out.println("Please, login to your account in order to proceed...");
+
+        String username;
+        String password;
+        Person user = null;
+
+        for (int i=0; i < 5; i++) {
+            System.out.println("Username: ");
+            username = scanner.nextLine();
+
+            System.out.println("Password: ");
+            password = scanner.nextLine();
+
+            try {
+                user = personController.logIn(username, password);
+                break;
+            }
+            catch (InvalidCredentialsException e) {
+                System.out.println(e.getMessage());
+                System.out.println("Please, try again.");
+            }
+        }
+
+        if (user == null) {
+            System.exit(0);
+        }
 
         while (true) {
             System.out.println("---- Library Menu ----");
