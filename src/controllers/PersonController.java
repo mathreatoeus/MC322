@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import models.people.*;
+import exceptions.InvalidCredentialsException;
 
 public class PersonController {
     // Private Attributes ---------------------------------------------------------------
@@ -84,6 +85,21 @@ public class PersonController {
     }
 
     /**
+     * Searches for a user by their username.
+     *
+     * @param username the username to search for.
+     * @return the user with a corresponding username.
+     */
+    private Person searchUserByUsername(String username) {
+        for (Person user : users) {
+            if ((user.getUsername()).equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Tries to add a user to the user list.
      *
      * @param user user to add.
@@ -107,5 +123,29 @@ public class PersonController {
      */
     public void removeUser(Person user) {
         this.users.remove(user);
+    }
+
+    /**
+     * Tries to perform a user's login.
+     *
+     * @param username the user's input username.
+     * @param password the user's input password;
+     * @return the user with those credentials (if the authentication succeeds).
+     * @throws InvalidCredentialsException if the authentication fails.
+     */
+    public Person logIn(String username, String password) throws InvalidCredentialsException {
+        Person user = this.searchUserByUsername(username);
+
+        if (user != null) {
+            if ((user.getPassword()).equals(password)) {
+                return user;
+            }
+            else {
+                throw new InvalidCredentialsException("Invalid password.");
+            }
+        }
+        else {
+            throw new InvalidCredentialsException("Invalid username");
+        }
     }
 }
