@@ -21,7 +21,7 @@ public abstract class Item {
     private final int timesBorrowed;
     private final LocalDate additionDate;
     private Loan currentLoan;
-    private final PriorityQueue<Reserve> reserves;
+    // private final PriorityQueue<Reserve> reserves;
     private final ArrayList<Comment> comments;
 
     // Constructor ----------------------------------------------------------------------
@@ -34,17 +34,17 @@ public abstract class Item {
         this.timesBorrowed = 0;
         this.additionDate = LocalDate.now();
         this.currentLoan = null;
-        this.reserves = new PriorityQueue<>(new ReservesComparator());
+        // this.reserves = new PriorityQueue<>(new ReservesComparator());
         this.comments = new ArrayList<>();
     }
 
     // Custom Comparator ----------------------------------------------------------------
-    private static class ReservesComparator implements Comparator<Reserve> {
-        @Override
-        public int compare(Reserve reserve1, Reserve reserve2) {
-            return reserve2.getPickupDate().compareTo(reserve1.getPickupDate());
-        }
-    }
+    // private static class ReservesComparator implements Comparator<Reserve> {
+        // @Override
+        // public int compare(Reserve reserve1, Reserve reserve2) {
+            // return reserve2.getPickupDate().compareTo(reserve1.getPickupDate());
+        // }
+    // }
 
     // Getters --------------------------------------------------------------------------
     public String getTitle() {
@@ -79,9 +79,9 @@ public abstract class Item {
         return currentLoan;
     }
 
-    public PriorityQueue<Reserve> getReserves() {
-        return reserves;
-    }
+    // public PriorityQueue<Reserve> getReserves() {
+        // return reserves;
+    // }
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -136,17 +136,17 @@ public abstract class Item {
     /**
      * @return the reserve with the latest pickupDate.
      */
-    public Reserve pickLatestReserve() {
-        return (this.reserves).peek();
-    }
+    // public Reserve pickLatestReserve() {
+       // return (this.reserves).peek();
+    // }
 
     /**
      * Adds a reserve to the reserve list.
      *
      * @param reserve reserve to add.
      */
-    public void addReserve(Reserve reserve) {
-        (this.reserves).add(reserve);
-    }
+    // public void addReserve(Reserve reserve) {
+        // (this.reserves).add(reserve);
+    // }
 }
 

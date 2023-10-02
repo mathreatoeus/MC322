@@ -213,7 +213,7 @@ public class Loan {
     public boolean renewLoan() {
         // If the loan was made by a User object.
         if (this.user != null) {
-            if ((this.item).getReserves().isEmpty() && !(this.user).getIsSuspended()) {
+            if (!(this.user).getIsSuspended()) {
                 this.amountOfRenewals++;
 
                 // Evaluating each possible case for user.
@@ -246,7 +246,7 @@ public class Loan {
         }
         // If the loan was made by a LibraryStaff object.
         else {
-            if ((this.item).getReserves().isEmpty() && !this.libStaffMember.getIsSuspended()) {
+            if (!this.libStaffMember.getIsSuspended()) {
                 this.retrievalDate = this.retrievalDate.plusDays(20);
                 this.amountOfRenewals++;
 
