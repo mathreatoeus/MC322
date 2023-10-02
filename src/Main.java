@@ -81,6 +81,7 @@ public class Main {
         }
 
         if (user == null) {
+            System.out.println("You exceeded the maximum amount of login trials. Exiting...");
             System.exit(0);
         }
 
